@@ -6,11 +6,11 @@ export const defaultLocale = "ua";
 
 export default getRequestConfig(async ({requestLocale}) => {
     const locale = await requestLocale;
-    if (!locales.includes(locale as any)) {
+    if (!locale || !locales.includes(locale as any)) {
         notFound();
     }
     return {
-        locale,
+        locale: locale as string,
         messages: (await import(`../public/locales/${locale}/common.json`)).default
     };
 });
