@@ -9,16 +9,16 @@ export default function Home() {
     const t = useTranslations();
 
     return (
-        /* Изменено: добавлен класс bg-fixed и относительное позиционирование для стабильности фона на мобильных */
-        <div className="bg-grid relative min-h-[100dvh] bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300 bg-fixed">
+        /* Использование min-h-[100dvh] решает проблему прыгающей высоты в мобильном Chrome */
+        /* Убран bg-fixed, так как он часто ломает рендеринг сетки на мобильных */
+        <div className="bg-grid relative min-h-[100dvh] bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
 
-            {/* Эффект свечения: подправлены параметры для лучшей видимости в мобильном Chrome */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200%] max-w-6xl h-[600px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none z-0" />
+            {/* Свечение: увеличена ширина (w-[300%]) для мобильных, чтобы оно не исчезало при масштабировании */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none z-0" />
 
             <main className="relative z-10 container mx-auto px-6 pt-10 pb-32 flex flex-col items-center">
                 <section className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10">
 
-                    {/* Анимированный Badge */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,6 @@ export default function Home() {
                         {t('home')}
                     </motion.div>
 
-                    {/* Заголовок */}
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -50,7 +49,6 @@ export default function Home() {
                         {t('hero.subtitle')}
                     </motion.p>
 
-                    {/* Кнопки */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -68,16 +66,16 @@ export default function Home() {
                     </motion.div>
                 </section>
 
-                {/* Bento Grid */}
-                <section className="mt-20 w-full grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[180px] md:auto-rows-[200px]">
-                    <div className="md:col-span-2 md:row-span-2 p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600/30 transition-colors flex flex-col justify-end">
+                {/* Исправленная сетка для мобильных: убрана фиксированная высота auto-rows, если контента много */}
+                <section className="mt-20 w-full grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-min md:auto-rows-[200px]">
+                    <div className="md:col-span-2 md:row-span-2 p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600/30 transition-colors flex flex-col justify-end min-h-[200px]">
                         <h3 className="text-xl md:text-2xl font-bold italic">{t('features.smart')}</h3>
                         <p className="text-zinc-500 mt-2 text-sm md:text-base">{t('hero.subtitle')}</p>
                     </div>
-                    <div className="p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-red-600/30 transition-colors flex items-center">
+                    <div className="p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 hover:border-red-600/30 transition-colors flex items-center min-h-[100px]">
                         <h3 className="font-bold">{t('features.support')}</h3>
                     </div>
-                    <div className="p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-900 dark:bg-white flex items-center justify-center group overflow-hidden">
+                    <div className="p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-zinc-900 dark:bg-white flex items-center justify-center group overflow-hidden min-h-[100px]">
                         <BookOpen className="text-white dark:text-black group-hover:text-red-600 group-hover:scale-110 transition-all" size={40} />
                     </div>
                 </section>
