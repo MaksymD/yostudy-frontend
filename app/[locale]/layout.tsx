@@ -4,6 +4,7 @@ import {notFound} from 'next/navigation';
 import {locales} from '@/lib/i18n';
 import "@/app/globals.css";
 import {Geist, Geist_Mono} from "next/font/google";
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -32,9 +33,9 @@ export default async function LocaleLayout({
     return (
         <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
         <body className="min-h-full flex flex-col">
-        {}
         <NextIntlClientProvider messages={messages} locale={locale}>
             {children}
+            <Navbar /> {/* Добавляем навигацию вниз */}
         </NextIntlClientProvider>
         </body>
         </html>
