@@ -9,12 +9,10 @@ export default function Home() {
     const t = useTranslations();
 
     return (
-        /* Использование min-h-[100dvh] решает проблему прыгающей высоты в мобильном Chrome */
-        /* Убран bg-fixed, так как он часто ломает рендеринг сетки на мобильных */
-        <div className="bg-grid relative min-h-[100dvh] bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
+        <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
 
-            {/* Свечение: увеличена ширина (w-[300%]) для мобильных, чтобы оно не исчезало при масштабировании */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none z-0" />
+            {/* change here */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none -z-10" />
 
             <main className="relative z-10 container mx-auto px-6 pt-10 pb-32 flex flex-col items-center">
                 <section className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10">
@@ -55,7 +53,7 @@ export default function Home() {
                         transition={{ delay: 0.3 }}
                         className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full sm:w-auto"
                     >
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-semibold hover:scale-105 transition-all shadow-lg shadow-red-600/20 active:scale-95">
+                        <button className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-semibold hover:scale-105 transition-all shadow-lg shadow-red-600/20 active:scale-95 cursor-pointer">
                             {t('hero.cta')} <ArrowRight size={18} />
                         </button>
 
@@ -66,7 +64,6 @@ export default function Home() {
                     </motion.div>
                 </section>
 
-                {/* Исправленная сетка для мобильных: убрана фиксированная высота auto-rows, если контента много */}
                 <section className="mt-20 w-full grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-min md:auto-rows-[200px]">
                     <div className="md:col-span-2 md:row-span-2 p-6 md:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-gradient-to-br from-red-600/5 to-transparent hover:border-red-600/30 transition-colors flex flex-col justify-end min-h-[200px]">
                         <h3 className="text-xl md:text-2xl font-bold italic">{t('features.smart')}</h3>
