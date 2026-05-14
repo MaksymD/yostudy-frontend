@@ -37,6 +37,6 @@
 html, body {
     background-color: var(--background) !important;
     color: var(--foreground);
-    font-family: var(--font-sans);
+    font-family: var(--font-sans), sans-serif;
     min-height: 100vh;
 }
