@@ -1,3 +1,4 @@
+import ThemeInitializer from '@/components/ThemeInitializer';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -37,6 +38,9 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages} locale={locale}>
             {/* Header is displayed at the top of all pages */}
             <Header />
+
+            {/* Initialize theme (runs client-side) */}
+            <ThemeInitializer />
 
             {/* Main page content with padding top below the Header */}
             <main className="flex-grow pt-20">
