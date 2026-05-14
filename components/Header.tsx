@@ -54,7 +54,7 @@ export default function Header() {
                 {/* Right Action */}
                 <div className="flex items-center gap-4">
                     <button
-                        className="text-xs sm:text-sm font-semibold bg-red-600 hover:bg-red-700 text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-600/10">
+                        className="hidden sm:block text-sm font-semibold bg-red-600 hover:bg-red-700 text-white px-5 py-2.5 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-600/10">
                         {t('consultation')}
                     </button>
                 </div>

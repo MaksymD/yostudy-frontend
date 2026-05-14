@@ -5,7 +5,7 @@ import {locales} from '@/lib/i18n';
 import "@/app/globals.css";
 import {Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/Navbar";
-import Header from "@/components/Header";
+import Header from "@/components/Header"; // Импортируем новый компонент Header
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -24,26 +24,30 @@ export default async function LocaleLayout({
     children: React.ReactNode;
     params: Promise<{ locale: string }>;
 }) {
+    // Получаем текущую локаль из параметров
     const {locale} = await params;
 
+    // Проверяем, поддерживается ли данная локаль
     if (!locales.includes(locale as any)) {
         notFound();
     }
+
+    // Загружаем сообщения для локализации
     const messages = await getMessages();
 
     return (
         <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-        <body className="min-h-full flex flex-col text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
+        <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
         <NextIntlClientProvider messages={messages} locale={locale}>
-            {/* Header is displayed at the top of all pages */}
+            {/* Header отображается сверху на всех страницах */}
             <Header />
 
-            {/* Main page content with padding top below the Header */}
+            {/* Основной контент страницы с отступом под Header */}
             <main className="flex-grow pt-20">
                 {children}
             </main>
 
-            {/* Navbar is fixed at the bottom */}
+            {/* Navbar зафиксирован внизу */}
             <Navbar />
         </NextIntlClientProvider>
         </body>
