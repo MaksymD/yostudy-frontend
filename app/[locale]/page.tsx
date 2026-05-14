@@ -11,8 +11,8 @@ export default function Home() {
     return (
         <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
 
-            {/* changed: smaller overlay on mobile to match desktop visual */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[140%] sm:w-[120%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[60px] md:blur-[120px] rounded-full pointer-events-none -z-10" />
+            {/* change here */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none -z-10" />
 
             <main className="relative z-10 container mx-auto px-6 pt-10 pb-32 flex flex-col items-center">
                 <section className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10">
