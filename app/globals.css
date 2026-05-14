@@ -5,6 +5,11 @@
     --foreground: #171717;
     --font-geist-sans: initial;
     --font-geist-mono: initial;
+
+    /* new vars for grid */
+    --grid-rgb: 0,0,0;           /* light theme grid color (r,g,b) */
+    --grid-opacity: 0.08;       /* base grid line opacity */
+    --grid-size: 40px 40px;     /* base grid cell size */
 }
 
 @theme inline {
@@ -18,21 +23,42 @@
     :root {
         --background: #0a0a0a;
         --foreground: #ededed;
+
+        /* dark theme grid */
+        --grid-rgb: 255,255,255;
+        --grid-opacity: 0.08;
     }
 }
 
 @layer base {
     .bg-grid {
-        background-size: 40px 40px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 1px, transparent 1px);
+        background-size: var(--grid-size);
+        background-image:
+            linear-gradient(to right, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px);
         background-attachment: scroll;
-        background-color: transparent;
+        /* ensure grid layer uses same base background color — avoids stacking/visual differences on mobile */
+        background-color: var(--background);
     }
 
     .dark .bg-grid {
-        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+        /* dark theme still uses the same var; keep border lines bright */
+        background-image:
+            linear-gradient(to right, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px);
+    }
+
+    /* reduce density/opacity on small screens to match perceived look on desktop */
+    @media (max-width: 640px) {
+        .bg-grid {
+            --grid-size: 30px 30px;
+            /* local override for perceived lighter grid on small screens */
+            --grid-opacity: 0.06;
+            background-size: var(--grid-size);
+            background-image:
+                linear-gradient(to right, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(var(--grid-rgb), var(--grid-opacity)) 1px, transparent 1px);
+        }
     }
 }
 
