@@ -51,10 +51,10 @@ export default function Header() {
                     ))}
                 </nav>
 
-                {/* Right Action */}
-                <div className="flex items-center gap-4">
+                {/* Right Action Button */}
+                <div className="flex items-center shrink-0">
                     <button
-                        className="text-xs sm:text-sm font-semibold bg-red-600 hover:bg-red-700 text-white px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-600/10">
+                        className="text-[11px] sm:text-sm font-semibold bg-red-600 hover:bg-red-700 text-white px-2.5 py-1.5 sm:px-5 sm:py-2.5 rounded-xl transition-all active:scale-95 shadow-lg shadow-red-600/10 whitespace-nowrap">
                         {t('consultation')}
                     </button>
                 </div>
