@@ -24,7 +24,7 @@ export default function Header() {
         { id: 'adaptation', key: 'adaptation', icon: Explore },
     ];
 
-    // Функция плавного скролла до нужного раздела по его ID
+    // scroll function to section by id
     const handleScroll = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -36,20 +36,20 @@ export default function Header() {
         <header className="fixed top-0 w-full z-50 py-4 px-4 sm:px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
             <div className="container mx-auto h-16 flex items-center justify-between gap-4">
 
-                {/* Логотип */}
+                {/* LOGO */}
                 <Link href={`/${locale}`} className="text-xl font-bold tracking-tighter shrink-0">
-                    <span className="relative text-2xl sm:text-3xl font-black tracking-tight text-red-600">
+                    <span className="relative text-6xl sm:text-3xl font-black tracking-tight text-red-600">
                         <span className="relative inline-block">
                             <span className="absolute -top-[-3px] left-0 h-[2px] w-full bg-white"></span>
                             Yo
                         </span>
-                        <span className="ml-1 text-lg sm:text-xl font-semibold text-white underline decoration-red-600 decoration-2 underline-offset-4">
+                        <span className="ml-1 text-lg sm:text-2xl font-semibold text-white underline decoration-red-600 decoration-2 underline-offset-4">
                             Study
                         </span>
                     </span>
                 </Link>
 
-                {/* Адаптивная навигация: Всегда в одну линию, на мобилках скроллится иконками */}
+                {/* Adapting navigation */}
                 <nav className="flex items-center gap-3 sm:gap-6 overflow-x-auto scrollbar-none max-w-full py-1 px-2 mx-auto lg:mx-0">
                     {menuItems.map((item) => {
                         const IconComponent = item.icon;
@@ -60,10 +60,8 @@ export default function Header() {
                                 title={t(item.key)}
                                 className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-500 transition-colors cursor-pointer whitespace-nowrap p-1 sm:p-0 rounded-lg"
                             >
-                                {/* Иконка видна всегда на мобильных устройствах */}
                                 <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 dark:text-zinc-400" />
 
-                                {/* Текст прячется на экранах меньше 768px (md) */}
                                 <span className="hidden md:inline">
                                     {t(item.key)}
                                 </span>
@@ -72,7 +70,6 @@ export default function Header() {
                     })}
                 </nav>
 
-                {/* Правая кнопка действия */}
                 <div className="flex items-center shrink-0">
                     <button
                         onClick={() => handleScroll('consultation')}

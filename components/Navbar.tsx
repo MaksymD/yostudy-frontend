@@ -14,7 +14,7 @@ export default function Navbar() {
         { id: 'adaptation', key: 'adaptation', icon: Explore },
     ];
 
-    // Функція плавного скролу до потрібного розділу за його ID
+    // scroll function to section by id
     const handleScroll = (id: string) => {
         const element = document.getElementById(id);
         if (element) {

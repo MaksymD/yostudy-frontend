@@ -12,10 +12,9 @@ import ChatIcon from '@mui/icons-material/Chat';
 import Link from "next/link";
 
 export default function Home() {
-    // Вызываем без аргументов, чтобы иметь доступ ко всему JSON через точки (например, 'hero.title')
     const t = useTranslations();
 
-    // Функция для плавного скролла к секциям
+    // slightly modified scroll function to be used in multiple places
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -23,7 +22,6 @@ export default function Home() {
         }
     };
 
-    // Структура секций синхронизирована с ключами в "sections" и "menu" вашего JSON
     const sectionsData = [
         { id: "consultation", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
         { id: "documents", key: "documents", icon: Description, color: "from-purple-600/5" },
@@ -35,12 +33,11 @@ export default function Home() {
     return (
         <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
 
-            {/* Фоновое свечение главного экрана */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none -z-10" />
 
             <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 pb-32 flex flex-col items-center">
 
-                {/* ГЛАВНЫЙ ЭКРАН (HERO SECTION) */}
+                {/* (HERO SECTION) */}
                 <section className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10 min-h-[70vh] justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -51,7 +48,6 @@ export default function Home() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
                         </span>
-                        {/* Исправлено: "home" лежит в корне вашего JSON */}
                         {t('home')}
                     </motion.div>
 
@@ -93,7 +89,7 @@ export default function Home() {
                     </motion.div>
                 </section>
 
-                {/* СЕКЦИЯ: О КОМПАНИИ */}
+                {/* ABOUT SECTION */}
                 <motion.section
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -137,7 +133,6 @@ export default function Home() {
                     </div>
                 </motion.section>
 
-                {/* ДИНАМИЧЕСКИЙ ВЫВОД ВСЕХ СЕКЦИЙ САЙТА */}
                 <div className="w-full max-w-5xl space-y-16 mt-24">
                     {sectionsData.map((section, index) => {
                         const IconElement = section.icon;
@@ -158,7 +153,6 @@ export default function Home() {
                                     <div>
                                         <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">YO Study Service</span>
                                         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">
-                                            {/* Исправлено: Названия блоков берутся из объекта menu, как в Header/Navbar */}
                                             {t(`menu.${section.key}`)}
                                         </h2>
                                     </div>
@@ -174,7 +168,7 @@ export default function Home() {
                     })}
                 </div>
 
-                {/* СЕКЦИЯ СВЯЗИ: ФОРМА КОНСУЛЬТАЦИИ И МЕССЕНДЖЕРЫ */}
+                {/* CONSULTATION SECTION */}
                 <motion.section
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -186,7 +180,6 @@ export default function Home() {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
-                        {/* Левый блок заголовков */}
                         <div className="space-y-4 text-center lg:text-left">
                             <span className="text-xs font-bold tracking-widest text-red-600 uppercase">
                                 {t('features.support')}
@@ -199,7 +192,7 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* Правый блок с формой и соцсетями */}
+                        {/* block social networks */}
                         <div className="space-y-6 overflow-hidden">
                             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
                                 <input
@@ -216,14 +209,14 @@ export default function Home() {
                                 </button>
                             </form>
 
-                            {/* Декоративный текстовый разделитель */}
+                            {/* text separator */}
                             <div className="flex items-center gap-3 text-xs text-zinc-400 uppercase tracking-wider justify-center lg:justify-start">
                                 <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
                                 <span>{t('contact.divider_text')}</span>
                                 <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
                             </div>
 
-                            {/* Быстрые кнопки мессенджеров и соцсетей строго в одну линию */}
+                            {/* contact buttons */}
                             <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-2 w-full overflow-x-auto scrollbar-none pb-1">
                                 <a
                                     href="https://t.me/your_username"
@@ -256,7 +249,7 @@ export default function Home() {
                                 </a>
 
                                 <a
-                                    href="https://instagram.com/your_username"
+                                    href="https://instagram.com/yostudy.austria"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
@@ -272,7 +265,7 @@ export default function Home() {
 
             </main>
 
-            {/* Невидимый SVG контейнер для градиента Instagram */}
+            {/* invisible SVG container for Instagram */}
             <svg width="0" height="0" className="absolute pointer-events-none">
                 <radialGradient id="instagram-gradient" r="150%" cx="30%" cy="107%">
                     <stop stopColor="#fdf497" offset="0%" />
