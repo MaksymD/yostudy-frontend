@@ -22,7 +22,7 @@ export default function Home() {
         }
     };
 
-    // Data structure for the main feature sections
+    // First element ID changed to 'consultation-info' to separate it from the final contact form section
     const sectionsData = [
         { id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
         { id: "documents", key: "documents", icon: Description, color: "from-purple-600/5" },
@@ -77,6 +77,7 @@ export default function Home() {
                         transition={{ delay: 0.3 }}
                         className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full sm:w-auto px-4"
                     >
+                        {/* This button targets the bottom form container */}
                         <button
                             onClick={() => scrollToSection('consultation')}
                             className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-semibold hover:scale-105 transition-all shadow-lg shadow-red-600/20 active:scale-95 cursor-pointer"

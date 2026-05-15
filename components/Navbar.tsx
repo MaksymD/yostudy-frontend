@@ -6,8 +6,9 @@ import { AddHomeWork, Description, Explore, HelpCenter, School } from '@mui/icon
 export default function Navbar() {
     const t = useTranslations('menu');
 
+    // ID changed to 'consultation-info' to correctly navigate to the services list block
     const menuItems = [
-        { id: 'consultation', key: 'consultation', icon: HelpCenter },
+        { id: 'consultation-info', key: 'consultation', icon: HelpCenter },
         { id: 'documents', key: 'documents', icon: Description },
         { id: 'admission', key: 'admission', icon: School },
         { id: 'dormitory', key: 'dormitory', icon: AddHomeWork },

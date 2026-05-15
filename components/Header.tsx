@@ -1,34 +1,40 @@
 'use client';
 
 import Link from 'next/link';
-import {useParams} from 'next/navigation';
-import {useTranslations} from 'next-intl';
-import {AddHomeWork, Description, Explore, HelpCenter, School} from '@mui/icons-material';
+import { useParams } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import {
+    HelpCenter,
+    Description,
+    School,
+    AddHomeWork,
+    Explore
+} from '@mui/icons-material';
 
 export default function Header() {
     const params = useParams();
     const locale = params.locale || 'ua';
     const t = useTranslations('menu');
 
+    // ID changed to 'consultation-info' for the navigation icon menu item
     const menuItems = [
-        {id: 'consultation', key: 'consultation', icon: HelpCenter},
-        {id: 'documents', key: 'documents', icon: Description},
-        {id: 'admission', key: 'admission', icon: School},
-        {id: 'dormitory', key: 'dormitory', icon: AddHomeWork},
-        {id: 'adaptation', key: 'adaptation', icon: Explore},
+        { id: 'consultation-info', key: 'consultation', icon: HelpCenter },
+        { id: 'documents', key: 'documents', icon: Description },
+        { id: 'admission', key: 'admission', icon: School },
+        { id: 'dormitory', key: 'dormitory', icon: AddHomeWork },
+        { id: 'adaptation', key: 'adaptation', icon: Explore },
     ];
 
     // Smooth scroll handler to find section by id
     const handleScroll = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
-            element.scrollIntoView({behavior: 'smooth', block: 'start'});
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     };
 
     return (
-        <header
-            className="fixed top-0 w-full z-50 py-4 px-4 sm:px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
+        <header className="fixed top-0 w-full z-50 py-4 px-4 sm:px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
             <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
                 {/* Logo Link */}
@@ -56,7 +62,7 @@ export default function Header() {
                                 title={t(item.key)}
                                 className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-500 transition-colors cursor-pointer whitespace-nowrap p-1 sm:p-0 rounded-lg"
                             >
-                                <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 dark:text-zinc-400"/>
+                                <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 dark:text-zinc-400" />
                                 <span>
                                     {t(item.key)}
                                 </span>
@@ -65,7 +71,7 @@ export default function Header() {
                     })}
                 </nav>
 
-                {/* Right Action Button - Stays visible to let mobile users navigate to the form */}
+                {/* Right Action Button - Scrolls directly to the bottom consultation/contact form */}
                 <div className="flex items-center shrink-0">
                     <button
                         onClick={() => handleScroll('consultation')}
