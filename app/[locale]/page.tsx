@@ -14,7 +14,7 @@ import Link from "next/link";
 export default function Home() {
     const t = useTranslations();
 
-    // slightly modified scroll function to be used in multiple places
+    // Smooth scroll handler
     const scrollToSection = (id: string) => {
         const element = document.getElementById(id);
         if (element) {
@@ -22,8 +22,9 @@ export default function Home() {
         }
     };
 
+    // Data structure for the main feature sections
     const sectionsData = [
-        { id: "consultation", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
+        { id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
         { id: "documents", key: "documents", icon: Description, color: "from-purple-600/5" },
         { id: "admission", key: "admission", icon: School, color: "from-red-600/5" },
         { id: "dormitory", key: "dormitory", icon: AddHomeWork, color: "from-amber-600/5" },
@@ -33,11 +34,12 @@ export default function Home() {
     return (
         <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
 
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300%] md:w-full max-w-6xl h-[500px] bg-red-600/10 blur-[80px] md:blur-[120px] rounded-full pointer-events-none -z-10" />
+            {/* Ambient background glow effect */}
+            <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 w-[160%] md:w-full max-w-5xl h-[550px] bg-red-600/25 dark:bg-red-600/20 blur-[65px] md:blur-[100px] rounded-full pointer-events-none -z-10 mix-blend-screen dark:mix-blend-plus-lighter opacity-90" />
 
             <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 pb-32 flex flex-col items-center">
 
-                {/* (HERO SECTION) */}
+                {/* HERO SECTION */}
                 <section className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10 min-h-[70vh] justify-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -97,11 +99,11 @@ export default function Home() {
                     transition={{ duration: 0.5 }}
                     className="mt-16 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-12 shadow-xl relative overflow-hidden"
                 >
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/5 blur-[60px] rounded-full pointer-events-none" />
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[60px] rounded-full pointer-events-none" />
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                         <div className="lg:col-span-1">
-                            <span className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('about.badge')}</span>
+                            <span className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('features.smart')}</span>
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mt-2">
                                 YO <span className="text-red-600">Study</span>
                             </h2>
@@ -133,6 +135,7 @@ export default function Home() {
                     </div>
                 </motion.section>
 
+                {/* DYNAMIC LIST OF SERVICES */}
                 <div className="w-full max-w-5xl space-y-16 mt-24">
                     {sectionsData.map((section, index) => {
                         const IconElement = section.icon;
@@ -168,18 +171,20 @@ export default function Home() {
                     })}
                 </div>
 
-                {/* CONSULTATION SECTION */}
+                {/* CONTACT AND CONSULTATION FORM SECTION */}
                 <motion.section
+                    id="consultation"
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mt-24 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-10 shadow-xl relative overflow-hidden"
+                    className="mt-24 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-10 shadow-xl relative overflow-hidden scroll-mt-24"
                 >
                     <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-red-600/10 blur-[50px] rounded-full pointer-events-none" />
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 
+                        {/* Text descriptions column */}
                         <div className="space-y-4 text-center lg:text-left">
                             <span className="text-xs font-bold tracking-widest text-red-600 uppercase">
                                 {t('features.support')}
@@ -192,7 +197,7 @@ export default function Home() {
                             </p>
                         </div>
 
-                        {/* block social networks */}
+                        {/* Submission form and messengers column */}
                         <div className="space-y-6 overflow-hidden">
                             <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
                                 <input
@@ -209,14 +214,14 @@ export default function Home() {
                                 </button>
                             </form>
 
-                            {/* text separator */}
+                            {/* Section divider with text */}
                             <div className="flex items-center gap-3 text-xs text-zinc-400 uppercase tracking-wider justify-center lg:justify-start">
                                 <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
                                 <span>{t('contact.divider_text')}</span>
                                 <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
                             </div>
 
-                            {/* contact buttons */}
+                            {/* Social communication and links channel */}
                             <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-2 w-full overflow-x-auto scrollbar-none pb-1">
                                 <a
                                     href="https://t.me/your_username"
@@ -265,7 +270,7 @@ export default function Home() {
 
             </main>
 
-            {/* invisible SVG container for Instagram */}
+            {/* Instagram custom color profile element */}
             <svg width="0" height="0" className="absolute pointer-events-none">
                 <radialGradient id="instagram-gradient" r="150%" cx="30%" cy="107%">
                     <stop stopColor="#fdf497" offset="0%" />
