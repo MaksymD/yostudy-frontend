@@ -22,13 +22,35 @@ export default function Home() {
         }
     };
 
-    // First element ID changed to 'consultation-info' to separate it from the final contact form section
+    // Main structural section data
     const sectionsData = [
         { id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
         { id: "documents", key: "documents", icon: Description, color: "from-purple-600/5" },
         { id: "admission", key: "admission", icon: School, color: "from-red-600/5" },
         { id: "dormitory", key: "dormitory", icon: AddHomeWork, color: "from-amber-600/5" },
         { id: "adaptation", key: "adaptation", icon: Explore, color: "from-emerald-600/5" },
+    ];
+
+    // Pricing configuration structured array referencing dynamic translation keys
+    const pricingPlans = [
+        {
+            key: "basic",
+            price: "€1350",
+            featuresCount: 4,
+            isPopular: false
+        },
+        {
+            key: "optimal",
+            price: "€2200",
+            featuresCount: 5,
+            isPopular: true
+        },
+        {
+            key: "premium",
+            price: "€3000",
+            featuresCount: 5,
+            isPopular: false
+        }
     ];
 
     return (
@@ -77,7 +99,6 @@ export default function Home() {
                         transition={{ delay: 0.3 }}
                         className="flex flex-col sm:flex-row justify-center gap-4 pt-4 w-full sm:w-auto px-4"
                     >
-                        {/* This button targets the bottom form container */}
                         <button
                             onClick={() => scrollToSection('consultation')}
                             className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-2xl font-semibold hover:scale-105 transition-all shadow-lg shadow-red-600/20 active:scale-95 cursor-pointer"
@@ -106,7 +127,7 @@ export default function Home() {
                         <div className="lg:col-span-1">
                             <span className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('features.smart')}</span>
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mt-2">
-                                Yo <span className="text-red-600">Study</span>
+                                YO <span className="text-red-600">Study</span>
                             </h2>
                             <div className="h-1 w-12 bg-red-600 rounded-full mt-4" />
                         </div>
@@ -171,6 +192,92 @@ export default function Home() {
                         );
                     })}
                 </div>
+
+                {/* PRICING PLANS SECTION */}
+                <motion.section
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                    className="mt-24 w-full max-w-5xl flex flex-col items-center space-y-12"
+                >
+                    <div className="text-center space-y-3">
+                        <span className="text-xs font-bold tracking-widest text-red-600 uppercase">
+                            {t('pricing.badge')}
+                        </span>
+                        <h2 className="text-2xl sm:text-4xl font-bold tracking-tight">
+                            {t('pricing.title')}
+                        </h2>
+                        <p className="text-sm sm:text-base text-zinc-500 max-w-2xl mx-auto px-4">
+                            {t('pricing.subtitle')}
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch px-2 sm:px-0">
+                        {pricingPlans.map((plan) => (
+                            <div
+                                key={plan.key}
+                                className={`relative flex flex-col justify-between bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border rounded-3xl p-6 md:p-8 shadow-xl transition-all ${
+                                    plan.isPopular
+                                        ? 'border-red-600 ring-2 ring-red-600/20 lg:scale-[1.03] z-10'
+                                        : 'border-zinc-200 dark:border-zinc-800'
+                                }`}
+                            >
+                                {plan.isPopular && (
+                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-sm">
+                                        {t('pricing.popular_badge')}
+                                    </span>
+                                )}
+
+                                <div className="space-y-6">
+                                    <div>
+                                        <h3 className="text-xl font-bold text-zinc-950 dark:text-white">
+                                            {t(`pricing.plans.${plan.key}.title`)}
+                                        </h3>
+                                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5 min-h-[32px]">
+                                            {t(`pricing.plans.${plan.key}.desc`)}
+                                        </p>
+                                    </div>
+
+                                    <div className="flex items-baseline">
+                                        <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">
+                                            {plan.price}
+                                        </span>
+                                        <span className="text-zinc-500 dark:text-zinc-400 ml-1 text-sm">
+                                            {t('pricing.period')}
+                                        </span>
+                                    </div>
+
+                                    <div className="h-px bg-zinc-200 dark:bg-zinc-800/80 w-full" />
+
+                                    <ul className="space-y-3.5">
+                                        {Array.from({ length: plan.featuresCount }).map((_, i) => (
+                                            <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300">
+                                                <CheckCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                                                <span>
+                                                    {t(`pricing.plans.${plan.key}.f${i + 1}`)}
+                                                </span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="pt-8">
+                                    <button
+                                        onClick={() => scrollToSection('consultation')}
+                                        className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all active:scale-95 cursor-pointer text-center ${
+                                            plan.isPopular
+                                                ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/10'
+                                                : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800'
+                                        }`}
+                                    >
+                                        {t('pricing.cta')}
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.section>
 
                 {/* CONTACT AND CONSULTATION FORM SECTION */}
                 <motion.section
