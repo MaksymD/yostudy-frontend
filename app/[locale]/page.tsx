@@ -57,7 +57,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight max-w-4xl px-2 leading-tight"
+                        className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight max-w-4xl px-2 leading-tight whitespace-pre-line"
                     >
                         {t('hero.title')}
                     </motion.h1>
@@ -105,7 +105,7 @@ export default function Home() {
                         <div className="lg:col-span-1">
                             <span className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('features.smart')}</span>
                             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight mt-2">
-                                YO <span className="text-red-600">Study</span>
+                                Yo <span className="text-red-600">Study</span>
                             </h2>
                             <div className="h-1 w-12 bg-red-600 rounded-full mt-4" />
                         </div>
