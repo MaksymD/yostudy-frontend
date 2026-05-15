@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, HelpCenter, Description, School, AddHomeWork, Explore, GppGood, EmojiEvents, CheckCircle } from "@mui/icons-material";
@@ -11,8 +12,28 @@ import {
 import ChatIcon from '@mui/icons-material/Chat';
 import Link from "next/link";
 
+interface Particle {
+    id: number;
+    size: number;
+    left: string;
+    duration: number;
+    delay: number;
+}
+
 export default function Home() {
     const t = useTranslations();
+    const [particles, setParticles] = useState<Particle[]>([]);
+
+    useEffect(() => {
+        const generatedParticles = Array.from({ length: 30 }, (_, i) => ({
+            id: i,
+            size: Math.random() * 4 + 2,
+            left: `${Math.random() * 100}%`,
+            duration: Math.random() * 20 + 25,
+            delay: Math.random() * -30,
+        }));
+        setParticles(generatedParticles);
+    }, []);
 
     // Smooth scroll handler
     const scrollToSection = (id: string) => {
@@ -24,11 +45,11 @@ export default function Home() {
 
     // Main structural section data
     const sectionsData = [
-        { id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/5" },
-        { id: "documents", key: "documents", icon: Description, color: "from-purple-600/5" },
-        { id: "admission", key: "admission", icon: School, color: "from-red-600/5" },
-        { id: "dormitory", key: "dormitory", icon: AddHomeWork, color: "from-amber-600/5" },
-        { id: "adaptation", key: "adaptation", icon: Explore, color: "from-emerald-600/5" },
+        { id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/10" },
+        { id: "documents", key: "documents", icon: Description, color: "from-purple-600/10" },
+        { id: "admission", key: "admission", icon: School, color: "from-red-600/10" },
+        { id: "dormitory", key: "dormitory", icon: AddHomeWork, color: "from-amber-600/10" },
+        { id: "adaptation", key: "adaptation", icon: Explore, color: "from-emerald-600/10" },
     ];
 
     const pricingPlans = [
@@ -37,29 +58,99 @@ export default function Home() {
             price: "€1350",
             featuresCount: 4,
             isPopular: false,
-            hoverStyle: "hover:border-blue-500/30 dark:hover:border-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/5"
+            hoverStyle: "hover:border-blue-500/40 dark:hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10"
         },
         {
             key: "optimal",
             price: "€2200",
             featuresCount: 5,
             isPopular: true,
-            hoverStyle: "border-red-600/40 dark:border-red-600/30 shadow-xl shadow-red-600/5 hover:border-red-600/60 hover:shadow-2xl hover:shadow-red-600/15"
+            hoverStyle: "border-red-600/50 dark:border-red-600/40 shadow-xl shadow-red-600/10 hover:border-red-600/70 hover:shadow-2xl hover:shadow-red-600/20"
         },
         {
             key: "premium",
             price: "€3000",
             featuresCount: 5,
             isPopular: false,
-            hoverStyle: "hover:border-amber-500/30 dark:hover:border-amber-500/20 hover:shadow-2xl hover:shadow-amber-500/5"
+            hoverStyle: "hover:border-amber-500/40 dark:hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10"
         }
     ];
 
     return (
-        <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300">
+        <div className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300 bg-zinc-50/50 dark:bg-zinc-950/50">
 
-            {/* Ambient background glow effect */}
-            <div className="absolute top-[-10px] left-1/2 -translate-x-1/2 w-[160%] md:w-full max-w-5xl h-[550px] bg-red-600/25 dark:bg-red-600/20 blur-[65px] md:blur-[100px] rounded-full pointer-events-none -z-10 mix-blend-screen dark:mix-blend-plus-lighter opacity-90" />
+            {/* ADVANCED GLASSMORPHISM BACKGROUND SPHERES & PARTICLES */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none -z-20">
+                <motion.div
+                    animate={{
+                        x: [-20, 40, -20],
+                        y: [0, 60, 0],
+                        scale: [1, 1.15, 1],
+                    }}
+                    transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute top-[5%] left-[15%] w-[80vw] md:w-[45rem] h-[45rem] bg-red-600/20 dark:bg-red-600/15 blur-[110px] md:blur-[140px] rounded-full mix-blend-screen dark:mix-blend-plus-lighter"
+                />
+                <motion.div
+                    animate={{
+                        x: [40, -40, 40],
+                        y: [100, -20, 100],
+                        scale: [1.1, 0.9, 1.1],
+                    }}
+                    transition={{
+                        duration: 16,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute top-[25%] right-[5%] w-[70vw] md:w-[40rem] h-[40rem] bg-blue-600/15 dark:bg-blue-500/10 blur-[110px] md:blur-[140px] rounded-full mix-blend-screen dark:mix-blend-plus-lighter"
+                />
+                <motion.div
+                    animate={{
+                        scale: [0.95, 1.1, 0.95],
+                        opacity: [0.6, 0.9, 0.6]
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute bottom-[20%] left-[10%] w-[75vw] md:w-[50rem] h-[50rem] bg-amber-500/10 dark:bg-amber-600/5 blur-[120px] md:blur-[150px] rounded-full mix-blend-screen dark:mix-blend-plus-lighter"
+                />
+
+                {/* Breathing Interactive Particles Layout */}
+                {particles.map((particle) => (
+                    <motion.div
+                        key={particle.id}
+                        initial={{ y: "100vh", opacity: 0 }}
+                        animate={{
+                            y: "-10vh",
+                            x: ["0px", "25px", "-25px", "0px"],
+                            opacity: [0, 0.4, 0.4, 0]
+                        }}
+                        transition={{
+                            duration: particle.duration,
+                            delay: particle.delay,
+                            repeat: Infinity,
+                            ease: "linear",
+                            x: {
+                                duration: particle.duration / 3,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }
+                        }}
+                        style={{
+                            position: 'absolute',
+                            left: particle.left,
+                            width: particle.size,
+                            height: particle.size,
+                        }}
+                        className="rounded-full bg-red-500/40 dark:bg-zinc-300/30 blur-[0.5px]"
+                    />
+                ))}
+            </div>
 
             <main className="relative z-10 container mx-auto px-4 sm:px-6 pt-10 pb-32 flex flex-col items-center">
 
@@ -68,7 +159,7 @@ export default function Home() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100/80 dark:bg-zinc-900/80 backdrop-blur-sm border border-zinc-200 dark:border-zinc-800 text-sm font-medium"
+                        className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md border border-white/60 dark:border-zinc-800/60 text-sm font-medium shadow-sm"
                     >
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -108,9 +199,9 @@ export default function Home() {
                             {t('hero.cta')} <ArrowRight className="w-5 h-5" />
                         </button>
 
-                        <div className="flex bg-zinc-100 dark:bg-zinc-900 p-1 rounded-2xl border border-zinc-200 dark:border-zinc-800">
-                            <Link href="/ua" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white dark:hover:bg-zinc-800 transition-colors font-medium">UA</Link>
-                            <Link href="/ru" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white dark:hover:bg-zinc-800 transition-colors font-medium">RU</Link>
+                        <div className="flex bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-1 rounded-2xl border border-white/50 dark:border-zinc-800/80 shadow-sm">
+                            <Link href="/ua" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">UA</Link>
+                            <Link href="/ru" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">RU</Link>
                         </div>
                     </motion.div>
                 </section>
@@ -121,7 +212,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mt-16 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-12 shadow-xl relative overflow-hidden"
+                    className="mt-16 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 md:p-12 shadow-2xl shadow-zinc-950/5 relative overflow-hidden"
                 >
                     <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[60px] rounded-full pointer-events-none" />
 
@@ -143,17 +234,17 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10 pt-8 border-t border-white/40 dark:border-zinc-800/40">
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-red-50 dark:bg-red-950/30 text-red-600 rounded-xl"><GppGood className="w-5 h-5" /></div>
+                            <div className="p-2 bg-white/60 dark:bg-zinc-950/40 text-red-600 rounded-xl border border-white/50 dark:border-zinc-800/40 shadow-sm"><GppGood className="w-5 h-5" /></div>
                             <span className="text-sm font-medium">{t('about.feature_partnership')}</span>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-red-50 dark:bg-red-950/30 text-red-600 rounded-xl"><EmojiEvents className="w-5 h-5" /></div>
+                            <div className="p-2 bg-white/60 dark:bg-zinc-950/40 text-red-600 rounded-xl border border-white/50 dark:border-zinc-800/40 shadow-sm"><EmojiEvents className="w-5 h-5" /></div>
                             <span className="text-sm font-medium">{t('about.feature_experience')}</span>
                         </div>
                         <div className="flex items-center gap-3">
-                            <div className="p-2 bg-red-50 dark:bg-red-950/30 text-red-600 rounded-xl"><CheckCircle className="w-5 h-5" /></div>
+                            <div className="p-2 bg-white/60 dark:bg-zinc-950/40 text-red-600 rounded-xl border border-white/50 dark:border-zinc-800/40 shadow-sm"><CheckCircle className="w-5 h-5" /></div>
                             <span className="text-sm font-medium">{t('about.feature_result')}</span>
                         </div>
                     </div>
@@ -171,10 +262,10 @@ export default function Home() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: "-100px" }}
                                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                                className={`w-full bg-gradient-to-br ${section.color} to-transparent backdrop-blur-sm border border-zinc-200 dark:border-zinc-800/80 rounded-3xl p-6 sm:p-10 shadow-lg scroll-mt-24 hover:border-red-600/20 transition-all`}
+                                className={`w-full bg-gradient-to-br ${section.color} to-white/20 dark:to-zinc-900/10 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 sm:p-10 shadow-xl shadow-zinc-950/5 scroll-mt-24 hover:border-red-600/30 transition-all duration-300`}
                             >
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                                    <div className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm text-red-600 rounded-2xl flex items-center justify-center">
+                                    <div className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
                                         <IconElement className="w-6 h-6" />
                                     </div>
                                     <div>
@@ -219,10 +310,10 @@ export default function Home() {
                         {pricingPlans.map((plan) => (
                             <div
                                 key={plan.key}
-                                className={`relative flex flex-col justify-between backdrop-blur-md border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${
+                                className={`relative flex flex-col justify-between backdrop-blur-xl border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${
                                     plan.isPopular
-                                        ? 'bg-white/70 dark:bg-zinc-900/70 border-red-600/60 ring-4 ring-red-600/5 lg:scale-[1.03] z-10'
-                                        : 'bg-white/30 dark:bg-zinc-900/30 border-zinc-200/80 dark:border-zinc-800/80 opacity-[0.98] hover:opacity-100'
+                                        ? 'bg-white/65 dark:bg-zinc-900/65 border-red-600/50 ring-4 ring-red-600/5 lg:scale-[1.03] z-10 shadow-xl shadow-zinc-950/10'
+                                        : 'bg-white/25 dark:bg-zinc-900/25 border-white/40 dark:border-zinc-800/40 shadow-xl shadow-zinc-950/5 opacity-[0.98] hover:opacity-100'
                                 }`}
                             >
                                 {plan.isPopular && (
@@ -250,7 +341,7 @@ export default function Home() {
                                         </span>
                                     </div>
 
-                                    <div className="h-px bg-zinc-200 dark:bg-zinc-800/80 w-full" />
+                                    <div className="flex border-b border-zinc-200 dark:border-zinc-800 w-full" />
 
                                     <ul className="space-y-3.5">
                                         {Array.from({ length: plan.featuresCount }).map((_, i) => (
@@ -270,7 +361,7 @@ export default function Home() {
                                         className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all active:scale-95 cursor-pointer text-center ${
                                             plan.isPopular
                                                 ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20'
-                                                : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-200/40 dark:border-zinc-800/40'
+                                                : 'bg-white/60 hover:bg-white/80 dark:bg-zinc-950/40 dark:hover:bg-zinc-950/60 text-zinc-900 dark:text-white border border-white/50 dark:border-zinc-800/40 shadow-sm'
                                         }`}
                                     >
                                         {t('pricing.cta')}
@@ -288,7 +379,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="mt-24 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-3xl p-6 md:p-10 shadow-xl relative overflow-hidden scroll-mt-24"
+                    className="mt-24 w-full max-w-5xl bg-white/35 dark:bg-zinc-900/35 backdrop-blur-xl border border-white/40 dark:border-zinc-800/40 rounded-3xl p-6 md:p-10 shadow-2xl shadow-zinc-950/5 relative overflow-hidden scroll-mt-24"
                 >
                     <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-red-600/10 blur-[50px] rounded-full pointer-events-none" />
 
@@ -314,7 +405,7 @@ export default function Home() {
                                     type="tel"
                                     placeholder={t('contact.input_placeholder')}
                                     required
-                                    className="flex-grow px-4 py-4 rounded-xl bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 focus:outline-none focus:border-red-600 dark:focus:border-red-600 text-sm font-medium shadow-sm transition-colors duration-200"
+                                    className="flex-grow px-4 py-4 rounded-xl bg-white/70 dark:bg-zinc-950 border border-white/50 dark:border-zinc-800/80 focus:outline-none focus:border-red-600 dark:focus:border-red-600 text-sm font-medium shadow-sm transition-colors duration-200"
                                 />
                                 <button
                                     type="submit"
@@ -326,9 +417,9 @@ export default function Home() {
 
                             {/* Section divider with text */}
                             <div className="flex items-center gap-3 text-xs text-zinc-400 uppercase tracking-wider justify-center lg:justify-start">
-                                <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
+                                <div className="h-px bg-white/40 dark:bg-zinc-800/40 flex-grow max-w-[60px]" />
                                 <span>{t('contact.divider_text')}</span>
-                                <div className="h-px bg-zinc-200 dark:bg-zinc-800 flex-grow max-w-[60px]" />
+                                <div className="h-px bg-white/40 dark:bg-zinc-800/40 flex-grow max-w-[60px]" />
                             </div>
 
                             {/* Social communication and links channel */}
@@ -337,7 +428,7 @@ export default function Home() {
                                     href="https://t.me/your_username"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <TelegramIcon className="w-4 h-4 text-sky-400" />
                                     Telegram
@@ -347,7 +438,7 @@ export default function Home() {
                                     href="viber://chat?number=%2B380000000000"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <ChatIcon className="w-4 h-4 text-purple-500" />
                                     Viber
@@ -357,7 +448,7 @@ export default function Home() {
                                     href="https://wa.me/380000000000"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <WhatsAppIcon className="w-4 h-4 text-emerald-500" />
                                     WhatsApp
@@ -367,7 +458,7 @@ export default function Home() {
                                     href="https://instagram.com/yostudy.austria"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950/50 hover:bg-zinc-50 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <InstagramIcon style={{ fill: "url(#instagram-gradient)" }} className="w-4 h-4" />
                                     Instagram
