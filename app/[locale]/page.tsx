@@ -31,25 +31,27 @@ export default function Home() {
         { id: "adaptation", key: "adaptation", icon: Explore, color: "from-emerald-600/5" },
     ];
 
-    // Pricing configuration structured array referencing dynamic translation keys
     const pricingPlans = [
         {
             key: "basic",
             price: "€1350",
             featuresCount: 4,
-            isPopular: false
+            isPopular: false,
+            hoverStyle: "hover:border-blue-500/30 dark:hover:border-blue-500/20 hover:shadow-2xl hover:shadow-blue-500/5"
         },
         {
             key: "optimal",
             price: "€2200",
             featuresCount: 5,
-            isPopular: true
+            isPopular: true,
+            hoverStyle: "border-red-600/40 dark:border-red-600/30 shadow-xl shadow-red-600/5 hover:border-red-600/60 hover:shadow-2xl hover:shadow-red-600/15"
         },
         {
             key: "premium",
             price: "€3000",
             featuresCount: 5,
-            isPopular: false
+            isPopular: false,
+            hoverStyle: "hover:border-amber-500/30 dark:hover:border-amber-500/20 hover:shadow-2xl hover:shadow-amber-500/5"
         }
     ];
 
@@ -213,18 +215,18 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch px-2 sm:px-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch px-2 sm:px-0 pt-4">
                         {pricingPlans.map((plan) => (
                             <div
                                 key={plan.key}
-                                className={`relative flex flex-col justify-between bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md border rounded-3xl p-6 md:p-8 shadow-xl transition-all ${
+                                className={`relative flex flex-col justify-between backdrop-blur-md border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${
                                     plan.isPopular
-                                        ? 'border-red-600 ring-2 ring-red-600/20 lg:scale-[1.03] z-10'
-                                        : 'border-zinc-200 dark:border-zinc-800'
+                                        ? 'bg-white/70 dark:bg-zinc-900/70 border-red-600/60 ring-4 ring-red-600/5 lg:scale-[1.03] z-10'
+                                        : 'bg-white/30 dark:bg-zinc-900/30 border-zinc-200/80 dark:border-zinc-800/80 opacity-[0.98] hover:opacity-100'
                                 }`}
                             >
                                 {plan.isPopular && (
-                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-sm">
+                                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md shadow-red-600/10">
                                         {t('pricing.popular_badge')}
                                     </span>
                                 )}
@@ -234,7 +236,7 @@ export default function Home() {
                                         <h3 className="text-xl font-bold text-zinc-950 dark:text-white">
                                             {t(`pricing.plans.${plan.key}.title`)}
                                         </h3>
-                                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5 min-h-[32px]">
+                                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5 min-h-[32px] leading-relaxed">
                                             {t(`pricing.plans.${plan.key}.desc`)}
                                         </p>
                                     </div>
@@ -243,7 +245,7 @@ export default function Home() {
                                         <span className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">
                                             {plan.price}
                                         </span>
-                                        <span className="text-zinc-500 dark:text-zinc-400 ml-1 text-sm">
+                                        <span className="text-zinc-500 dark:text-zinc-400 ml-1.5 text-xs font-medium">
                                             {t('pricing.period')}
                                         </span>
                                     </div>
@@ -252,7 +254,7 @@ export default function Home() {
 
                                     <ul className="space-y-3.5">
                                         {Array.from({ length: plan.featuresCount }).map((_, i) => (
-                                            <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300">
+                                            <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300 leading-snug">
                                                 <CheckCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
                                                 <span>
                                                     {t(`pricing.plans.${plan.key}.f${i + 1}`)}
@@ -267,8 +269,8 @@ export default function Home() {
                                         onClick={() => scrollToSection('consultation')}
                                         className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all active:scale-95 cursor-pointer text-center ${
                                             plan.isPopular
-                                                ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/10'
-                                                : 'bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white hover:bg-zinc-200 dark:hover:bg-zinc-800'
+                                                ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20'
+                                                : 'bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-900 dark:hover:bg-zinc-800 text-zinc-900 dark:text-white border border-zinc-200/40 dark:border-zinc-800/40'
                                         }`}
                                     >
                                         {t('pricing.cta')}
