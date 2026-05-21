@@ -59,7 +59,8 @@
     "description": "Enter your phone number and our manager will call you back, or choose your preferred messenger to start a chat instantly.",
     "input_placeholder": "+380 (99) 000-00-00",
     "button_submit": "Get a Consultation",
-    "divider_text": "Or text us"
+    "divider_text": "Or text us",
+    "telegram_message": "Hello! I am from the YoStudy website. Please contact me regarding a consultation. My phone number is: {phone}"
   },
   "pricing": {
     "badge": "YO Study Pricing",

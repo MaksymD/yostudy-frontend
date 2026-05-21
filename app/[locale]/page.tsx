@@ -23,6 +23,7 @@ interface Particle {
 export default function Home() {
     const t = useTranslations();
     const [particles, setParticles] = useState<Particle[]>([]);
+    const [phone, setPhone] = useState("");
 
     useEffect(() => {
         const generatedParticles = Array.from({ length: 30 }, (_, i) => ({
@@ -40,6 +41,25 @@ export default function Home() {
         const element = document.getElementById(id);
         if (element) {
             element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    };
+
+    // Function to redirect to Telegram upon form submission
+    const handleTelegramSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!phone) return;
+        const message = t('contact.telegram_message', { phone: phone });
+        const encodedMessage = encodeURIComponent(message);
+        window.open(`https://t.me/436608462821?text=${encodedMessage}`, '_blank');
+        setPhone("");
+    };
+
+    // Handles phone state and filters input to allow only digits and an optional leading plus sign
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const input = e.target.value;
+        const cleanInput = input.match(/^\+?\d*/);
+        if (cleanInput) {
+            setPhone(cleanInput[0]);
         }
     };
 
@@ -400,10 +420,13 @@ export default function Home() {
 
                         {/* Submission form and messengers column */}
                         <div className="space-y-6 overflow-hidden">
-                            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col sm:flex-row gap-3">
+                            {/* form handleTelegramSubmit */}
+                            <form onSubmit={handleTelegramSubmit} className="flex flex-col sm:flex-row gap-3">
                                 <input
                                     type="tel"
                                     placeholder={t('contact.input_placeholder')}
+                                    value={phone}
+                                    onChange={handlePhoneChange}
                                     required
                                     className="flex-grow px-4 py-4 rounded-xl bg-white/70 dark:bg-zinc-950 border border-white/50 dark:border-zinc-800/80 focus:outline-none focus:border-red-600 dark:focus:border-red-600 text-sm font-medium shadow-sm transition-colors duration-200"
                                 />
@@ -425,7 +448,7 @@ export default function Home() {
                             {/* Social communication and links channel */}
                             <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-2 w-full overflow-x-auto scrollbar-none pb-1">
                                 <a
-                                    href="https://t.me/+380958216860"
+                                    href="https://t.me/436608462821"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
