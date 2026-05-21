@@ -236,7 +236,7 @@ export default function Home() {
                                         className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
                                         <IconElement className="w-6 h-6"/></div>
                                     <div>
-                                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">YO Study Service</span>
+                                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">{t('service_badge')}</span>
                                         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">{t(`menu.${section.key}`)}</h2>
                                     </div>
                                 </div>

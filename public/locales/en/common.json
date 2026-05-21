@@ -1,5 +1,6 @@
 {
   "home": "Home",
+  "service_badge": "YO Study Service",
   "menu": {
     "consultation": "Consultation",
     "documents": "Documents",
@@ -55,14 +56,14 @@
   },
   "contact": {
     "title_part1": "Have any questions?",
-    "title_part2": "Contact Us",
+    "title_part2": "\nContact Us",
     "description": "Enter your phone number and our manager will call you back, or choose your preferred messenger to start a chat instantly.",
     "input_placeholder": "+380 (99) 000-00-00",
     "button_submit": "Get a Consultation",
     "divider_text": "Or text us",
-    "telegram_message": "Hello! I am from the YOStudy website. Please contact me regarding a consultation. My phone number is: {phone}",
-    "direct_message": "Hello! I am from the YOStudy website. I would like to get a free consultation.",
-    "plan_message": "Hello! I am from the YOStudy website. I am interested in a consultation regarding the service package: {planName}."
+    "telegram_message": "Hello! I am from the YO Study website. Please contact me regarding a consultation. My phone number is: {phone}",
+    "direct_message": "Hello! I am from the YO Study website. I would like to get a free consultation.",
+    "plan_message": "Hello! I am from the YO Study website. I am interested in a consultation regarding the service package: {planName}."
   },
   "pricing": {
     "badge": "YO Study Pricing",
