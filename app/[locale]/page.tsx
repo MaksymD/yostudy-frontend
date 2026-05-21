@@ -50,7 +50,7 @@ export default function Home() {
         if (!phone) return;
         const message = t('contact.telegram_message', { phone: phone });
         const encodedMessage = encodeURIComponent(message);
-        window.open(`https://t.me/436608462821?text=${encodedMessage}`, '_blank');
+        window.open(`https://t.me/MaksymD3?text=${encodedMessage}`, '_blank');
         setPhone("");
     };
 
@@ -448,7 +448,7 @@ export default function Home() {
                             {/* Social communication and links channel */}
                             <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-2 w-full overflow-x-auto scrollbar-none pb-1">
                                 <a
-                                    href="https://t.me/436608462821"
+                                    href="https://t.me/MaksymD3"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
