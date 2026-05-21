@@ -41,7 +41,7 @@ export default function Header() {
                 <Link href={`/${locale}`} className="text-6xl font-bold tracking-tighter shrink-0">
                     <span className="relative inline-block text-red-600">
                         <span className="relative inline-block">
-                            <span className="absolute -top-[-7px] left-0 h-[2px] w-full bg-white"></span>
+                            <span className="absolute -top-[-4px] left-0 h-[2px] w-full bg-white"></span>
                             Yo
                     </span>
                     <span

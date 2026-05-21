@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, HelpCenter, Description, School, AddHomeWork, Explore, GppGood, EmojiEvents, CheckCircle } from "@mui/icons-material";
@@ -44,23 +44,39 @@ export default function Home() {
         }
     };
 
+    // Helper function to assemble and encode dynamic localized template text
+    const getMessengerLink = (baseUrl: string, phoneValue: string) => {
+        const message = t('contact.telegram_message', { phone: phoneValue });
+        return `${baseUrl}${encodeURIComponent(message)}`;
+    };
+
+    // Static fallback parameters optimized to evaluate strictly upon local variations
+    const encodedStaticMessage = useMemo(() => {
+        const fallbackPhone = t('contact.input_placeholder');
+        const message = t('contact.telegram_message', { phone: fallbackPhone });
+        return encodeURIComponent(message);
+    }, [t]);
+
     // Function to redirect to Telegram upon form submission
     const handleTelegramSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!phone) return;
-        const message = t('contact.telegram_message', { phone: phone });
-        const encodedMessage = encodeURIComponent(message);
-        window.open(`https://t.me/MaksymD3?text=${encodedMessage}`, '_blank');
+        const fullUrl = getMessengerLink("https://t.me/solomchakju?text=", phone);
+        window.open(fullUrl, '_blank');
         setPhone("");
     };
 
-    // Handles phone state and filters input to allow only digits and an optional leading plus sign
+    // Handles phone state and filters input to safely allow only integers along with a single optional leading symbol
     const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const input = e.target.value;
-        const cleanInput = input.match(/^\+?\d*/);
-        if (cleanInput) {
-            setPhone(cleanInput[0]);
+        let cleanInput = e.target.value.replace(/[^\d+]/g, '');
+        if (cleanInput.includes('+')) {
+            const hasLeadingPlus = cleanInput.startsWith('+');
+            cleanInput = cleanInput.replace(/\+/g, '');
+            if (hasLeadingPlus) {
+                cleanInput = '+' + cleanInput;
+            }
         }
+        setPhone(cleanInput);
     };
 
     // Main structural section data
@@ -448,7 +464,7 @@ export default function Home() {
                             {/* Social communication and links channel */}
                             <div className="flex flex-nowrap items-center justify-center lg:justify-start gap-2 w-full overflow-x-auto scrollbar-none pb-1">
                                 <a
-                                    href="https://t.me/MaksymD3"
+                                    href={`https://t.me/solomchakju?text=${encodedStaticMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
@@ -458,7 +474,7 @@ export default function Home() {
                                 </a>
 
                                 <a
-                                    href="https://viber.click/380958216860"
+                                    href={`viber://chat?number=380958216860&text=${encodedStaticMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
@@ -468,7 +484,7 @@ export default function Home() {
                                 </a>
 
                                 <a
-                                    href="https://wa.me/436764579334?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%AF%20%D1%81%20%D1%81%D0%B0%D0%B9%D1%82%D0%B0%20YoStudy%2C%20%D1%85%D0%BE%D1%87%D1%83%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%B5%D0%B5%20%D0%BE%20%D0%BF%D0%BE%D1%81%D1%82%D1%83%D0%BF%D0%BB%D0%B5%D0%BD%D0%B8%D0%B8."
+                                    href={`https://wa.me/436764579334?text=${encodedStaticMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
