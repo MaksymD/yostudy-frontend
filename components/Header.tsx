@@ -38,7 +38,7 @@ export default function Header() {
             <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
                 {/* Logo Link */}
-                <Link href={`/${locale}`} className="text-6xl font-bold tracking-tighter shrink-0">
+                <Link href={`/${locale}`} className="text-6xl font-bold shrink-0">
                     <span className="relative inline-block text-red-600">
                         <span className="relative inline-block">
                             <span className="absolute -top-[-4px] left-0 h-[2px] w-full bg-white"></span>
