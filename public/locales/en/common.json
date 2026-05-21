@@ -1,0 +1,100 @@
+{
+  "home": "Home",
+  "menu": {
+    "consultation": "Consultation",
+    "documents": "Documents",
+    "admission": "Admission",
+    "dormitory": "Dormitory",
+    "adaptation": "Adaptation"
+  },
+  "hero": {
+    "title": "YoStudy — Stress-Free Admission to Austria.\nWe will handle everything for you",
+    "subtitle": "We guarantee successful university admission in Austria. Professional team, transparent process, and full support from the very first step to moving in.",
+    "cta": "Start for Free"
+  },
+  "features": {
+    "smart": "Smart Education",
+    "support": "24/7 Support"
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "About Company",
+    "p1_bold": "YO Study",
+    "p1_text": " is a professional educational agency specializing in comprehensive admission support for Ukrainian students entering universities in Austria. We work directly with Austrian educational institutions and official authorities, ensuring document precision, strict adherence to deadlines, and a guaranteed outcome.",
+    "p2_text": "Our team has years of experience studying and working in Austria, so we thoroughly understand every step — from document submission to post-relocation adaptation. We combine European professionalism with a personalized approach to make the admission process simple, predictable, and calm for our clients.",
+    "feature_partnership": "Official Partnership",
+    "feature_experience": "Years of Experience",
+    "feature_result": "Guaranteed Outcome"
+  },
+  "sections": {
+    "consultation": {
+      "title": "Free Consultation",
+      "subtitle": "Understand all the nuances of education in Austria with our experts.",
+      "text": "We will study your case in detail, assess your admission chances, help you choose the right university, and create a step-by-step personalized action plan. Leave a request, and we will contact you as shortly as possible."
+    },
+    "documents": {
+      "title": "Document Preparation",
+      "subtitle": "Bureaucracy without headaches or risks of rejection.",
+      "text": "Translation, apostillation, notarization, and correct completion of application forms are critical stages. We take all the paperwork upon ourselves, guaranteeing absolute compliance with the requirements of Austrian authorities."
+    },
+    "admission": {
+      "title": "Guaranteed Admission",
+      "subtitle": "Official enrollment in your chosen university in Austria.",
+      "text": "We completely oversee the university application process, handle official communication with the admissions committee, and promptly resolve any issues that arise right up until you receive your official letter of acceptance (Zulassungsbescheid)."
+    },
+    "dormitory": {
+      "title": "Dormitory Search and Booking",
+      "subtitle": "Comfortable and affordable housing for students.",
+      "text": "To secure your visa, you will definitely need a confirmation of accommodation in Austria. We help you find the best options for rooms in student residences (dormitories) or apartments, and fully arrange the lease agreement."
+    },
+    "adaptation": {
+      "title": "Adaptation and Support",
+      "subtitle": "Your smooth start in a new country.",
+      "text": "We don't leave you behind after you move! Our team helps you apply for your student residence permit on-site, open a bank account, register your residential address, buy health insurance, and find your way around the university campus."
+    }
+  },
+  "contact": {
+    "title_part1": "Have any questions?",
+    "title_part2": "Contact Us",
+    "description": "Enter your phone number and our manager will call you back, or choose your preferred messenger to start a chat instantly.",
+    "input_placeholder": "+380 (99) 000-00-00",
+    "button_submit": "Get a Consultation",
+    "divider_text": "Or text us"
+  },
+  "pricing": {
+    "badge": "YO Study Pricing",
+    "title": "Choose your service package",
+    "subtitle": "Transparent conditions, fixed costs, and no hidden fees for your peace of mind.",
+    "cta": "Choose Package",
+    "period": "/ for the entire process",
+    "popular_badge": "Best Seller",
+    "plans": {
+      "basic": {
+        "title": "Basic",
+        "desc": "Consultations and a detailed step-by-step plan for self-guided admission under expert supervision.",
+        "f1": "Personalized online consultation and strategy formulation",
+        "f2": "University selection and faculty requirements analysis",
+        "f3": "Detailed instructions for self-guided document submission",
+        "f4": "Registration for language exams (A2-C1)"
+      },
+      "optimal": {
+        "title": "Optimal",
+        "desc": "Full support and university document submission with oversight at every single stage.",
+        "f1": "Document submission to 1 university (up to 2 faculties)",
+        "f2": "Admission process monitoring and communication with the university",
+        "f3": "Collection, comprehensive translation, and notarization of documents",
+        "f4": "Registration for the placement test and university preparation courses (VWU)",
+        "f5": "Search, selection, and guaranteed booking of a student dormitory"
+      },
+      "premium": {
+        "title": "Premium",
+        "desc": "Maximum support package: extended document submission, exams, and on-site adaptation support.",
+        "f1": "Document submission to 2 universities (up to 4 faculties)",
+        "f2": "All services included in the \"Basic\" and \"Optimal\" packages",
+        "f3": "Entrance exam / OSA test (exam fee is already included)",
+        "f4": "Provision of mandatory preparation study materials",
+        "f5": "Full adaptation: assistance at the Magistrat for residence permit, banking, and insurance"
+      }
+    }
+  }
+}

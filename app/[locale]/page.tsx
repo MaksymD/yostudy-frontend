@@ -201,7 +201,7 @@ export default function Home() {
 
                         <div className="flex bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-1 rounded-2xl border border-white/50 dark:border-zinc-800/80 shadow-sm">
                             <Link href="/ua" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">UA</Link>
-                            <Link href="/ru" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">RU</Link>
+                            <Link href="/en" className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">EN</Link>
                         </div>
                     </motion.div>
                 </section>
