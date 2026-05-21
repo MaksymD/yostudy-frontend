@@ -60,7 +60,9 @@
     "input_placeholder": "+380 (99) 000-00-00",
     "button_submit": "Get a Consultation",
     "divider_text": "Or text us",
-    "telegram_message": "Hello! I am from the YoStudy website. Please contact me regarding a consultation. My phone number is: {phone}"
+    "telegram_message": "Hello! I am from the YOStudy website. Please contact me regarding a consultation. My phone number is: {phone}",
+    "direct_message": "Hello! I am from the YOStudy website. I would like to get a free consultation.",
+    "plan_message": "Hello! I am from the YOStudy website. I am interested in a consultation regarding the service package: {planName}."
   },
   "pricing": {
     "badge": "YO Study Pricing",
