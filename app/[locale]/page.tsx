@@ -4,6 +4,13 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
+    Badge,
+    HomeWork,
+    AccountBalance,
+    HealthAndSafety,
+    SimCard,
+    SupportAgent,
+    Shield,
     AddHomeWork,
     ArrowRight,
     CheckCircle,
@@ -17,7 +24,7 @@ import {
 } from "@mui/icons-material";
 import ChatIcon from '@mui/icons-material/Chat';
 import Link from "next/link";
-import Image from "next/image"; // Импортируем компонент Next.js для оптимизации картинок
+import Image from "next/image";
 
 interface Particle {
     id: number;
@@ -307,16 +314,56 @@ export default function Home() {
                                     {t(`sections.${section.key}.text`)}
                                 </p>
 
-                                {/* НОВИЙ БЛОК: Виведення списку послуг для адаптації */}
+                                {/* КОНТЕНТ ДЛЯ СЕКЦІЇ АДАПТАЦІЇ У СТИЛІ МАКЕТУ */}
                                 {section.key === "adaptation" && (
-                                    <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
-                                        {(t.raw("sections.adaptation.features") as string[]).map((feature, i) => (
-                                            <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300 leading-snug">
-                                                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                                                <span>{feature}</span>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <div className="mt-10 space-y-8">
+                                        {/* Сітка з картками (2 колонки на десктопі) */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {(t.raw("sections.adaptation.features") as { id: string; text: string }[]).map((feature, i) => {
+                                                // Мапимо іконки відповідно до номерів на макеті image_88a349.jpg
+                                                const iconsMap: Record<string, React.ElementType> = {
+                                                    "01": Badge,             // Віза / документ
+                                                    "02": HomeWork,          // Проживання / прописка
+                                                    "03": AccountBalance,    // Банк
+                                                    "04": HealthAndSafety,   // Страховка
+                                                    "05": SimCard,           // Сім-карта
+                                                    "06": SupportAgent       // Консультації / сапорт
+                                                };
+
+                                                const FeatureIcon = iconsMap[feature.id] || SupportAgent;
+
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
+                                                    >
+                                                        {/* Ліва частина: Іконка */}
+                                                        <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                            <FeatureIcon className="w-6 h-6" />
+                                                        </div>
+
+                                                        {/* Права частина: Номер + Текст */}
+                                                        <div className="space-y-1">
+                            <span className="text-xs font-bold text-red-600 tracking-wider block">
+                                {feature.id}
+                            </span>
+                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
+                                                                {feature.text}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+                                        </div>
+
+                                        {/* Футер-нотатка з іконкою щита знизу */}
+                                        <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 max-w-3xl">
+                                            <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
+                                            <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                                                {t("sections.adaptation.footer_text")}
+                                            </p>
+                                        </div>
+                                    </div>
                                 )}
 
                                 {section.key === "consultation" && (

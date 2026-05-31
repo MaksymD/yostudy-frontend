@@ -204,17 +204,17 @@
       "text": "To secure your visa, you will definitely need a confirmation of accommodation in Austria. We help you find the best options for rooms in student residences (dormitories) or apartments, and fully arrange the lease agreement."
     },
     "adaptation": {
-      "title": "Adaptation and Support",
-      "subtitle": "Your smooth and comfortable start in Austria.",
-      "text": "We provide full student support after your relocation and handle all key organizational matters, allowing you to fully focus on your studies and new opportunities. We stay by your side not only until your admission but throughout your entire adaptation period in Austria.",
+      "title": "Адаптація",
+      "subtitle": "Ваш впевнений старт в Австрії",
+      "text": "Ми забезпечуємо повний супровід студента після переїзду та беремо на себе всі ключові організаційні питання, щоб ви могли зосередитися на навчанні та нових можливостях.",
+      "footer_text": "Ми залишаємося поруч не лише до моменту вступу, а й протягом усього періоду вашої адаптації в Австрії.",
       "features": [
-        "Processing of student residence permit (visa) or temporary protection status",
-        "Residential address registration and preparation of required documents",
-        "Opening a local bank account and obtaining a bank card",
-        "Arranging comprehensive health insurance",
-        "Setting up mobile communication and getting a SIM card",
-        "Ongoing consultation and support for administrative and daily life issues",
-        "Full assistance in adapting to life and studying in Austria"
+        { "id": "01", "text": "Оформлення студентської візи або тимчасового захисту" },
+        { "id": "02", "text": "Реєстрація місця проживання та підготовка необхідних документів" },
+        { "id": "03", "text": "Відкриття банківського рахунку та отримання банківської картки" },
+        { "id": "04", "text": "Оформлення медичного страхування" },
+        { "id": "05", "text": "Підключення мобільного зв’язку та SIM-карти" },
+        { "id": "06", "text": "Консультаційна підтримка з адміністративних і побутових питань" }
       ]
     }
   },
