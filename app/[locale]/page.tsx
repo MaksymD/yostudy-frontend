@@ -17,6 +17,7 @@ import {
 } from "@mui/icons-material";
 import ChatIcon from '@mui/icons-material/Chat';
 import Link from "next/link";
+import Image from "next/image"; // Импортируем компонент Next.js для оптимизации картинок
 
 interface Particle {
     id: number;
@@ -30,6 +31,7 @@ export default function Home() {
     const t = useTranslations();
     const [particles, setParticles] = useState<Particle[]>([]);
     const [phone, setPhone] = useState("");
+    const [selectedCity, setSelectedCity] = useState("vienna");
 
     useEffect(() => {
         const generatedParticles = Array.from({length: 30}, (_, i) => ({
@@ -87,6 +89,41 @@ export default function Home() {
         setPhone(cleanInput);
     };
 
+    // Словарь логотипов. Ключ должен в точности совпадать со значением поля "name" из JSON
+    const universityLogos: Record<string, string> = {
+        "University of Vienna (1365)": "/images/universities/univie.png",
+        "TU Wien (1815)": "/images/universities/tuwien.png",
+        "WU Wien (1898)": "/images/universities/wu.png",
+        "Medical University of Vienna (2004)": "/images/universities/meduniwien.png",
+        "BOKU University (1872)": "/images/universities/boku.png",
+        "MODUL University Vienna (2007)": "/images/universities/modul.png",
+        "Webster Vienna Private University (1981)": "/images/universities/webster.png",
+        "Sigmund Freud University (2005)": "/images/universities/sfu.png",
+
+        "University of Graz (1585)": "/images/universities/uni-graz.png",
+        "Graz University of Technology (1811)": "/images/universities/tugraz.png",
+        "Medical University of Graz (2004)": "/images/universities/medunigraz.png",
+
+        "University of Innsbruck (1669)": "/images/universities/uibk.png",
+        "MCI Innsbruck (1995)": "/images/universities/mci.png",
+        "Medical University of Innsbruck (2004)": "/images/universities/meduniinnsbruck.png",
+
+        "Paris Lodron University Salzburg (1622)": "/images/universities/plus.png",
+        "Mozarteum University Salzburg (1841)": "/images/universities/mozarteum.png",
+        "FH Salzburg University of Applied Sciences (1995)": "/images/universities/fh-salzburg.png",
+
+        "Johannes Kepler University Linz (1966)": "/images/universities/jku.png",
+        "University of Arts Linz (1973)": "/images/universities/ufg.png",
+        "FH Oberösterreich – University of Applied Sciences (1994)": "/images/universities/fh-ooe.png",
+
+        "Alpen-Adria University Klagenfurt (1970)": "/images/universities/aau.png",
+        "FH Kärnten – University of Applied Sciences (1995)": "/images/universities/fh-kaernten.png",
+        "AAU School of Management (2002)": "/images/universities/aau-som.png"
+    };
+
+    // Заглушка, если логотип еще не загружен в папку проекта
+    const defaultLogo = "/images/universities/default-university.png";
+
     // Structural arrays
     const sectionsData = [
         {id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/10"},
@@ -119,6 +156,27 @@ export default function Home() {
             hoverStyle: "hover:border-amber-500/40 dark:hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10"
         }
     ];
+
+    const universityCities = [
+        "vienna",
+        "graz",
+        "innsbruck",
+        "salzburg",
+        "linz",
+        "klagenfurt"
+    ];
+
+    const selectedUniversityData = t.raw(
+        `sections.consultation.universities.${selectedCity}`
+    ) as {
+        city: string;
+        desc: string;
+        list: {
+            name: string;
+            fac: string;
+            text: string;
+        }[];
+    };
 
     return (
         <div
@@ -236,12 +294,115 @@ export default function Home() {
                                         className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
                                         <IconElement className="w-6 h-6"/></div>
                                     <div>
-                                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">{t('service_badge')}</span>
+                                        <span
+                                            className="text-xs font-semibold text-red-600 uppercase tracking-wider">{t('service_badge')}</span>
                                         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">{t(`menu.${section.key}`)}</h2>
                                     </div>
                                 </div>
-                                <h3 className="text-base sm:text-lg font-medium text-zinc-800 dark:text-zinc-200 mb-3 italic">{t(`sections.${section.key}.subtitle`)}</h3>
-                                <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">{t(`sections.${section.key}.text`)}</p>
+                                <h3 className="text-base sm:text-lg font-medium text-zinc-800 dark:text-zinc-200 mb-3 italic">
+                                    {t(`sections.${section.key}.subtitle`)}
+                                </h3>
+
+                                <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                    {t(`sections.${section.key}.text`)}
+                                </p>
+
+                                {section.key === "consultation" && (
+                                    <div className="mt-10">
+                                        <div className="mb-8">
+                                            <h4 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3">
+                                                {t("sections.consultation.universities_title")}
+                                            </h4>
+
+                                            <p className="text-zinc-500 dark:text-zinc-400">
+                                                {selectedUniversityData.desc}
+                                            </p>
+                                        </div>
+
+                                        {/* CITY TABS */}
+                                        <div className="flex flex-wrap gap-3 mb-8">
+                                            {universityCities.map((city) => (
+                                                <button
+                                                    key={city}
+                                                    onClick={() => setSelectedCity(city)}
+                                                    className={`px-5 py-2 rounded-xl font-medium transition-all cursor-pointer
+                    ${
+                                                        selectedCity === city
+                                                            ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                                                            : "bg-white/70 dark:bg-zinc-900/70 border border-white/50 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800"
+                                                    }`}
+                                                >
+                                                    {t(
+                                                        `sections.consultation.universities.${city}.city`
+                                                    )}
+                                                </button>
+                                            ))}
+                                        </div>
+
+                                        {/* CITY INFO */}
+                                        <div
+                                            className="mb-8 rounded-2xl border border-white/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 p-6">
+                                            <h5 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">
+                                                {selectedUniversityData.city}
+                                            </h5>
+
+                                            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                                                {selectedUniversityData.desc}
+                                            </p>
+                                        </div>
+
+                                        {/* UNIVERSITIES */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            {selectedUniversityData.list.map((university, index) => {
+                                                // Находим нужный логотип по имени университета или берем дефолтный
+                                                const logoPath = universityLogos[university.name] || defaultLogo;
+
+                                                return (
+                                                    <motion.div
+                                                        key={index}
+                                                        initial={{opacity: 0, y: 10}}
+                                                        animate={{opacity: 1, y: 0}}
+                                                        transition={{duration: 0.25}}
+                                                        className="rounded-2xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl p-6 hover:border-red-600/30 transition-all flex flex-col justify-between"
+                                                    >
+                                                        <div>
+                                                            <div className="flex items-start gap-4 mb-4">
+                                                                {/* Блок обертки логотипа университета */}
+                                                                <div className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+                                                                    <Image
+                                                                        src={logoPath}
+                                                                        alt={`${university.name} logo`}
+                                                                        width={40}
+                                                                        height={40}
+                                                                        className="object-contain max-w-full max-h-full"
+                                                                        priority={index < 4}
+                                                                    />
+                                                                </div>
+
+                                                                <div className="flex-grow">
+                                                                    <h5 className="font-bold text-zinc-900 dark:text-white leading-snug">
+                                                                        {university.name}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+
+                                                            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+                                                                {university.text}
+                                                            </p>
+                                                        </div>
+
+                                                        {/* Бейдж факультетов перенесен вниз для аккуратного выравнивания */}
+                                                        <div className="flex justify-end pt-1">
+                                                            <span className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold">
+                                                                {university.fac} {t("sections.consultation.faculties")}
+                                                            </span>
+                                                        </div>
+                                                    </motion.div>
+                                                );
+                                            })}
+                                        </div>
+                                    </div>
+                                )}
                             </motion.section>
                         );
                     })}

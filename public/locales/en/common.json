@@ -31,7 +31,162 @@
     "consultation": {
       "title": "Free Consultation",
       "subtitle": "Understand all the nuances of education in Austria with our experts.",
-      "text": "We will study your case in detail, assess your admission chances, help you choose the right university, and create a step-by-step personalized action plan. Leave a request, and we will contact you as shortly as possible."
+      "text": "We will study your case in detail, assess your admission chances, help you choose the right university, and create a step-by-step personalized action plan. Leave a request, and we will contact you as shortly as possible.",
+      "universities_title": "Austrian Universities by Cities",
+      "faculties": "Faculties",
+      "universities": {
+        "vienna": {
+          "city": "Vienna",
+          "desc": "The capital of student life in Austria. A hub of culture, innovation, and international education. It hosts the country's largest concentration of universities and student opportunities.",
+          "list": [
+            {
+              "name": "University of Vienna (1365)",
+              "fac": "15",
+              "text": "One of the oldest and largest universities in Europe. Renowned in humanities, natural sciences, social sciences, and international relations."
+            },
+            {
+              "name": "TU Wien (1815)",
+              "fac": "8",
+              "text": "Austria's leading technical university. Well-known for its programs in engineering, IT, architecture, and robotics."
+            },
+            {
+              "name": "WU Wien (1898)",
+              "fac": "7",
+              "text": "One of the best economic universities in Europe. Specializes in business, finance, management, and international economics."
+            },
+            {
+              "name": "Medical University of Vienna (2004)",
+              "fac": "3",
+              "text": "The largest medical university in Austria and one of the leading medical centers in Europe."
+            },
+            {
+              "name": "BOKU University (1872)",
+              "fac": "15",
+              "text": "A leader in ecology, biotechnology, food technology, sustainable development, and natural sciences."
+            },
+            {
+              "name": "MODUL University Vienna (2007)",
+              "fac": "4",
+              "text": "A modern international private university. Particularly strong in tourism, management, and sustainable development."
+            },
+            {
+              "name": "Webster Vienna Private University (1981)",
+              "fac": "5",
+              "text": "An American private university offering an international educational system and a multicultural environment."
+            },
+            {
+              "name": "Sigmund Freud University (2005)",
+              "fac": "5",
+              "text": "A private university widely known for its programs in psychology, psychotherapy, medicine, and law."
+            }
+          ]
+        },
+        "graz": {
+          "city": "Graz",
+          "desc": "One of the most comfortable student cities in Austria, featuring a remarkably cozy and welcoming atmosphere.",
+          "list": [
+            {
+              "name": "University of Graz (1585)",
+              "fac": "17",
+              "text": "One of the oldest universities in the country. Strong in humanities, natural sciences, and social sciences."
+            },
+            {
+              "name": "Graz University of Technology (1811)",
+              "fac": "7",
+              "text": "One of Austria's leading technical universities in the fields of engineering, IT, and robotics."
+            },
+            {
+              "name": "Medical University of Graz (2004)",
+              "fac": "4",
+              "text": "A modern medical university with high-impact scientific research and solid clinical practice."
+            }
+          ]
+        },
+        "innsbruck": {
+          "city": "Innsbruck",
+          "desc": "A city nestled in the Alps, where studying perfectly blends with incredible nature and an active lifestyle.",
+          "list": [
+            {
+              "name": "University of Innsbruck (1669)",
+              "fac": "16",
+              "text": "One of Austria's most prestigious universities, offering strong programs in natural, human, and social sciences."
+            },
+            {
+              "name": "MCI Innsbruck (1995)",
+              "fac": "4",
+              "text": "A practically oriented university with robust programs in business, management, and tourism."
+            },
+            {
+              "name": "Medical University of Innsbruck (2004)",
+              "fac": "5",
+              "text": "One of the country's leading hubs for medical sciences with a powerful research base."
+            }
+          ]
+        },
+        "salzburg": {
+          "city": "Salzburg",
+          "desc": "The city of Mozart, internationally famous for its stunning architecture and Old World European atmosphere.",
+          "list": [
+            {
+              "name": "Paris Lodron University Salzburg (1622)",
+              "fac": "6",
+              "text": "A classical university with prominent programs in law, communications, and natural sciences."
+            },
+            {
+              "name": "Mozarteum University Salzburg (1841)",
+              "fac": "3",
+              "text": "One of Europe's most famous arts universities, specializing in music and the performing arts."
+            },
+            {
+              "name": "FH Salzburg University of Applied Sciences (1995)",
+              "fac": "4",
+              "text": "A modern applied university with market-driven programs in IT, business, media, and tourism."
+            }
+          ]
+        },
+        "linz": {
+          "city": "Linz",
+          "desc": "A peaceful, modern city with a technological edge and a very high quality of life.",
+          "list": [
+            {
+              "name": "Johannes Kepler University Linz (1966)",
+              "fac": "15",
+              "text": "A modern university offering a wide spectrum of programs across technical, economic, and natural sciences."
+            },
+            {
+              "name": "University of Arts Linz (1973)",
+              "fac": "4",
+              "text": "A leading arts university, widely recognized for design, digital arts, and media."
+            },
+            {
+              "name": "FH Oberösterreich – University of Applied Sciences (1994)",
+              "fac": "4",
+              "text": "One of the top universities of applied sciences in Austria, maintaining strong ties to business and industry."
+            }
+          ]
+        },
+        "klagenfurt": {
+          "city": "Klagenfurt",
+          "desc": "A charming, picturesque lakeside city near Wörthersee, highly popular among students.",
+          "list": [
+            {
+              "name": "Alpen-Adria University Klagenfurt (1970)",
+              "fac": "4",
+              "text": "An international university featuring strong programs in information technology, management, and social sciences."
+            },
+            {
+              "name": "FH Kärnten – University of Applied Sciences (1995)",
+              "fac": "4",
+              "text": "A practically focused university with core programs in engineering, IT, and management."
+            },
+            {
+              "name": "AAU School of Management (2002)",
+              "fac": "4",
+              "text": "A business school with a clear focus on management, entrepreneurship, innovation, and international business."
+            }
+          ]
+        }
+      }
     },
     "documents": {
       "title": "Document Preparation",
