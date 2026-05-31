@@ -373,9 +373,6 @@ export default function Home() {
                                                 {t("sections.consultation.universities_title")}
                                             </h4>
 
-                                            <p className="text-zinc-500 dark:text-zinc-400">
-                                                {selectedUniversityData.desc}
-                                            </p>
                                         </div>
 
                                         {/* CITY TABS */}
