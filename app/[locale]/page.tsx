@@ -356,10 +356,10 @@ export default function Home() {
                                             })}
                                         </div>
 
-                                        {/* Футер-нотатка з іконкою щита знизу */}
-                                        <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 max-w-3xl">
-                                            <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5" />
-                                            <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                                        <div
+                                            className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full">
+                                            <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5"/>
+                                            <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
                                                 {t("sections.adaptation.footer_text")}
                                             </p>
                                         </div>

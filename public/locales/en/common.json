@@ -204,17 +204,17 @@
       "text": "To secure your visa, you will definitely need a confirmation of accommodation in Austria. We help you find the best options for rooms in student residences (dormitories) or apartments, and fully arrange the lease agreement."
     },
     "adaptation": {
-      "title": "Адаптація",
-      "subtitle": "Ваш впевнений старт в Австрії",
-      "text": "Ми забезпечуємо повний супровід студента після переїзду та беремо на себе всі ключові організаційні питання, щоб ви могли зосередитися на навчанні та нових можливостях.",
-      "footer_text": "Ми залишаємося поруч не лише до моменту вступу, а й протягом усього періоду вашої адаптації в Австрії.",
+      "title": "Adaptation",
+      "subtitle": "Your confident start in Austria",
+      "text": "We provide full student support after your relocation and handle all key organizational matters, allowing you to fully focus on your studies and new opportunities.",
+      "footer_text": "We stay by your side not only until your admission but throughout your entire adaptation period in Austria.",
       "features": [
-        { "id": "01", "text": "Оформлення студентської візи або тимчасового захисту" },
-        { "id": "02", "text": "Реєстрація місця проживання та підготовка необхідних документів" },
-        { "id": "03", "text": "Відкриття банківського рахунку та отримання банківської картки" },
-        { "id": "04", "text": "Оформлення медичного страхування" },
-        { "id": "05", "text": "Підключення мобільного зв’язку та SIM-карти" },
-        { "id": "06", "text": "Консультаційна підтримка з адміністративних і побутових питань" }
+        { "id": "01", "text": "Processing of a student residence permit or temporary protection status" },
+        { "id": "02", "text": "Residential address registration and preparation of required documents" },
+        { "id": "03", "text": "Opening a bank account and obtaining a bank card" },
+        { "id": "04", "text": "Arranging medical insurance" },
+        { "id": "05", "text": "Setting up mobile communication and getting a SIM card" },
+        { "id": "06", "text": "Ongoing consultation and support for administrative and daily life issues" }
       ]
     }
   },
