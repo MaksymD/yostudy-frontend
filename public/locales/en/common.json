@@ -205,8 +205,17 @@
     },
     "adaptation": {
       "title": "Adaptation and Support",
-      "subtitle": "Your smooth start in a new country.",
-      "text": "We don't leave you behind after you move! Our team helps you apply for your student residence permit on-site, open a bank account, register your residential address, buy health insurance, and find your way around the university campus."
+      "subtitle": "Your smooth and comfortable start in Austria.",
+      "text": "We provide full student support after your relocation and handle all key organizational matters, allowing you to fully focus on your studies and new opportunities. We stay by your side not only until your admission but throughout your entire adaptation period in Austria.",
+      "features": [
+        "Processing of student residence permit (visa) or temporary protection status",
+        "Residential address registration and preparation of required documents",
+        "Opening a local bank account and obtaining a bank card",
+        "Arranging comprehensive health insurance",
+        "Setting up mobile communication and getting a SIM card",
+        "Ongoing consultation and support for administrative and daily life issues",
+        "Full assistance in adapting to life and studying in Austria"
+      ]
     }
   },
   "contact": {

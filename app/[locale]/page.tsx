@@ -307,6 +307,18 @@ export default function Home() {
                                     {t(`sections.${section.key}.text`)}
                                 </p>
 
+                                {/* НОВИЙ БЛОК: Виведення списку послуг для адаптації */}
+                                {section.key === "adaptation" && (
+                                    <ul className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+                                        {(t.raw("sections.adaptation.features") as string[]).map((feature, i) => (
+                                            <li key={i} className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300 leading-snug">
+                                                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+
                                 {section.key === "consultation" && (
                                     <div className="mt-10">
                                         <div className="mb-8">
