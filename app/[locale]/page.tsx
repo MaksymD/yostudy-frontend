@@ -4,22 +4,27 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
-    Badge,
-    HomeWork,
     AccountBalance,
-    HealthAndSafety,
-    SimCard,
-    SupportAgent,
-    Shield,
     AddHomeWork,
+    Apartment,
     ArrowRight,
+    Badge,
+    BookmarkAdded,
+    BorderColor,
     CheckCircle,
     Description,
     Explore,
+    FolderShared,
+    HealthAndSafety,
     HelpCenter,
+    HomeWork,
     Instagram as InstagramIcon,
     School,
+    Shield,
+    SimCard,
+    SupportAgent,
     Telegram as TelegramIcon,
+    VerifiedUser,
     WhatsApp as WhatsAppIcon
 } from "@mui/icons-material";
 import ChatIcon from '@mui/icons-material/Chat';
@@ -317,17 +322,18 @@ export default function Home() {
                                 {/* КОНТЕНТ ДЛЯ СЕКЦІЇ АДАПТАЦІЇ У СТИЛІ МАКЕТУ */}
                                 {section.key === "adaptation" && (
                                     <div className="mt-10 space-y-8">
-                                        {/* Сітка з картками (2 колонки на десктопі) */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {(t.raw("sections.adaptation.features") as { id: string; text: string }[]).map((feature, i) => {
-                                                // Мапимо іконки відповідно до номерів на макеті image_88a349.jpg
+                                            {(t.raw("sections.adaptation.features") as {
+                                                id: string;
+                                                text: string
+                                            }[]).map((feature, i) => {
                                                 const iconsMap: Record<string, React.ElementType> = {
-                                                    "01": Badge,             // Віза / документ
-                                                    "02": HomeWork,          // Проживання / прописка
-                                                    "03": AccountBalance,    // Банк
-                                                    "04": HealthAndSafety,   // Страховка
-                                                    "05": SimCard,           // Сім-карта
-                                                    "06": SupportAgent       // Консультації / сапорт
+                                                    "01": Badge,
+                                                    "02": HomeWork,
+                                                    "03": AccountBalance,
+                                                    "04": HealthAndSafety,
+                                                    "05": SimCard,
+                                                    "06": SupportAgent
                                                 };
 
                                                 const FeatureIcon = iconsMap[feature.id] || SupportAgent;
@@ -337,12 +343,10 @@ export default function Home() {
                                                         key={i}
                                                         className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
                                                     >
-                                                        {/* Ліва частина: Іконка */}
-                                                        <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
-                                                            <FeatureIcon className="w-6 h-6" />
+                                                        <div
+                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                            <FeatureIcon className="w-6 h-6"/>
                                                         </div>
-
-                                                        {/* Права частина: Номер + Текст */}
                                                         <div className="space-y-1">
                             <span className="text-xs font-bold text-red-600 tracking-wider block">
                                 {feature.id}
@@ -362,6 +366,50 @@ export default function Home() {
                                             <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
                                                 {t("sections.adaptation.footer_text")}
                                             </p>
+                                        </div>
+                                    </div>
+                                )}
+
+                                {section.key === "dormitory" && (
+                                    <div className="mt-10 space-y-6">
+                                        <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+                                            {t("sections.dormitory.features_title")}
+                                        </h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {(t.raw("sections.dormitory.features") as {
+                                                id: string;
+                                                text: string
+                                            }[]).map((feature, i) => {
+                                                const iconsMap: Record<string, React.ElementType> = {
+                                                    "01": Apartment,
+                                                    "02": BookmarkAdded,
+                                                    "03": FolderShared,
+                                                    "04": BorderColor,
+                                                    "05": VerifiedUser
+                                                };
+
+                                                const FeatureIcon = iconsMap[feature.id] || Apartment;
+
+                                                return (
+                                                    <div
+                                                        key={i}
+                                                        className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
+                                                    >
+                                                        <div
+                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                            <FeatureIcon className="w-6 h-6"/>
+                                                        </div>
+                                                        <div className="space-y-1">
+                            <span className="text-xs font-bold text-red-600 tracking-wider block">
+                                {feature.id}
+                            </span>
+                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
+                                                                {feature.text}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
                                         </div>
                                     </div>
                                 )}
@@ -424,7 +472,8 @@ export default function Home() {
                                                         <div>
                                                             <div className="flex items-start gap-4 mb-4">
                                                                 {/* Блок обертки логотипа университета */}
-                                                                <div className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
+                                                                <div
+                                                                    className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
                                                                     <Image
                                                                         src={logoPath}
                                                                         alt={`${university.name} logo`}
@@ -449,7 +498,8 @@ export default function Home() {
 
                                                         {/* Бейдж факультетов перенесен вниз для аккуратного выравнивания */}
                                                         <div className="flex justify-end pt-1">
-                                                            <span className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold">
+                                                            <span
+                                                                className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold">
                                                                 {university.fac} {t("sections.consultation.faculties")}
                                                             </span>
                                                         </div>

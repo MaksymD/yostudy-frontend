@@ -200,8 +200,16 @@
     },
     "dormitory": {
       "title": "Dormitory Search and Booking",
-      "subtitle": "Comfortable and affordable housing for students.",
-      "text": "To secure your visa, you will definitely need a confirmation of accommodation in Austria. We help you find the best options for rooms in student residences (dormitories) or apartments, and fully arrange the lease agreement."
+      "subtitle": "Comfortable and safe housing for students",
+      "text": "Moving to Austria begins with finding accommodation, as official confirmation of residence is a mandatory requirement for obtaining a student visa. We take over this entire process and select a dormitory or student residence according to your preferences, city of study, and budget. Thanks to our cooperation with verified residences across Austria, we offer the best options at competitive prices without unnecessary overpayments.\n\nYou do not need to handle correspondence on your own or figure out complex Austrian rental regulations. Our goal is for the student to arrive with everything ready, and for parents to feel absolutely confident in their child's safety and comfort. YO STUDY — we organize your student housing from the very first request to check-in.",
+      "features_title": "We accompany the entire process from start to finish:",
+      "features": [
+        { "id": "01", "text": "We select housing tailored to your request and budget — from affordable student rooms to modern premium-class residences" },
+        { "id": "02", "text": "We book the room in the chosen residence" },
+        { "id": "03", "text": "We prepare and approve all required documents" },
+        { "id": "04", "text": "We arrange the official signing of the lease agreement" },
+        { "id": "05", "text": "We provide official confirmation of accommodation required for your visa and admission" }
+      ]
     },
     "adaptation": {
       "title": "Adaptation",
