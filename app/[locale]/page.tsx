@@ -4,6 +4,13 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
+    Search,
+    Assignment,
+    Rule,
+    Translate,
+    Gavel,
+    AccessTime,
+    Send,
     AccountBalance,
     AddHomeWork,
     Apartment,
@@ -369,6 +376,89 @@ export default function Home() {
                                         </div>
                                     </div>
                                 )}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ ДОКУМЕНТІВ (БЕЗ ДУБЛЮВАННЯ + ФОТО ВГОРІ) === */}
+                                {section.key === "documents" && (
+                                    <div className="mt-6 space-y-8">
+
+                                        {/* === ПРЕМІУМ-ФОТО БАНЕР НА САМОМУ ВГОРІ (НА ВСЮ ШИРИНУ, БЕЗ ЗАТЕМНЕННЯ ОБЛИЧ) === */}
+                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-[#f4f4f4] dark:bg-zinc-950 shadow-xl h-[240px] sm:h-[350px] md:h-[450px] lg:h-[500px] transition-all duration-300">
+
+                                            {/* Контейнер для фото — тепер знову на всю ширину (w-full), щоб не було відступів */}
+                                            <div className="absolute inset-0 z-0 pointer-events-none">
+                                                <Image
+                                                    src="/images/documents/documents_1.png"
+                                                    alt="YO Study Documents Visual Team"
+                                                    fill
+                                                    sizes="100vw"
+                                                    /*
+                                                      object-cover розтягує на всю довжину,
+                                                      а lg:object-[85%_center] зміщує кадр так, щоб люди справа не обрізалися і стояли чітко в банері
+                                                    */
+                                                    className="object-cover object-center lg:object-[85%_center]"
+                                                    priority
+                                                />
+                                            </div>
+
+                                            {/*
+       М'ЯКИЙ ГРАДІЄНТ ТІЛЬКИ З ЛІВОГО КРАЮ БАНЕРА (Ширина всього 25%):
+       Він створює плавний перехід від початку банера вглиб фотографії,
+       але взагалі не доходить до центру та правої частини, де стоять люди.
+    */}
+                                            <div className="absolute inset-y-0 left-0 w-full lg:w-[25%] z-10 bg-gradient-to-r from-[#f4f4f4] via-[#f4f4f4]/60 to-transparent dark:from-zinc-950 dark:via-zinc-950/60 pointer-events-none" />
+
+                                            {/* М'який нижній перехід для мобільних */}
+                                            <div className="absolute inset-x-0 bottom-0 h-16 z-10 bg-gradient-to-t from-[#f4f4f4] to-transparent dark:from-zinc-950 lg:hidden pointer-events-none" />
+
+                                        </div>
+
+                                        {/* 2. БЛОК СУПРОВОДУ ТА КАРТОК З ІКОНКАМИ */}
+                                        <div className="space-y-6 pt-2">
+                                            <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+                                                {t("sections.documents.features_title")}
+                                            </h4>
+
+                                            {/* Двоколонкова сітка карток (01 - 07) */}
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {(t.raw("sections.documents.features") as { id: string; text: string }[]).map((feature, i) => {
+                                                    const iconsMap: Record<string, React.ElementType> = {
+                                                        "01": Search,
+                                                        "02": Assignment,
+                                                        "03": Rule,
+                                                        "04": Translate,
+                                                        "05": Gavel,
+                                                        "06": AccessTime,
+                                                        "07": Send
+                                                    };
+
+                                                    const FeatureIcon = iconsMap[feature.id] || Assignment;
+
+                                                    return (
+                                                        <div
+                                                            key={i}
+                                                            className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
+                                                        >
+                                                            {/* Ліва частина: Червона фірмова іконка */}
+                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                <FeatureIcon className="w-6 h-6" />
+                                                            </div>
+
+                                                            {/* Права частина: Номер + Текст */}
+                                                            <div className="space-y-1">
+                                <span className="text-xs font-bold text-red-600 tracking-wider block">
+                                    {feature.id}
+                                </span>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
+                                                                    {feature.text}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                )}
 
                                 {section.key === "dormitory" && (
                                     <div className="mt-10 space-y-6">
@@ -458,7 +548,6 @@ export default function Home() {
                                         {/* UNIVERSITIES */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                             {selectedUniversityData.list.map((university, index) => {
-                                                // Находим нужный логотип по имени университета или берем дефолтный
                                                 const logoPath = universityLogos[university.name] || defaultLogo;
 
                                                 return (
@@ -471,7 +560,6 @@ export default function Home() {
                                                     >
                                                         <div>
                                                             <div className="flex items-start gap-4 mb-4">
-                                                                {/* Блок обертки логотипа университета */}
                                                                 <div
                                                                     className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
                                                                     <Image
@@ -496,7 +584,6 @@ export default function Home() {
                                                             </p>
                                                         </div>
 
-                                                        {/* Бейдж факультетов перенесен вниз для аккуратного выравнивания */}
                                                         <div className="flex justify-end pt-1">
                                                             <span
                                                                 className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold">

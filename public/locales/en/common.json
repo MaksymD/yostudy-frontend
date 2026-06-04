@@ -189,9 +189,19 @@
       }
     },
     "documents": {
-      "title": "Document Preparation",
-      "subtitle": "Bureaucracy without headaches or risks of rejection.",
-      "text": "Translation, apostillation, notarization, and correct completion of application forms are critical stages. We take all the paperwork upon ourselves, guaranteeing absolute compliance with the requirements of Austrian authorities."
+      "title": "Documents",
+      "subtitle": "Precision that opens the doors to Austrian education",
+      "text": "Document preparation is one of the most critical stages of admission in Austria. Our team fully accompanies this process, monitoring every single detail from the first consultation to university submission. We analyze the specific requirements of your chosen institution, create a tailored list of necessary documents, and help avoid mistakes that could lead to delays or rejection.\n\nWe organize official translations, notarized copies, apostilles, and legalization. Every procedure is performed strictly when required by the university or Austrian authorities — we do not impose unnecessary services or create extra expenses. We take full responsibility for the correctness of your paperwork so you can focus on planning your future.",
+      "features_title": "Our support includes:",
+      "features": [
+        { "id": "01", "text": "In-depth analysis of the specific requirements of your chosen university" },
+        { "id": "02", "text": "Compiling a complete and comprehensive document package for admission" },
+        { "id": "03", "text": "Verifying the compliance of all documents with the educational institution's criteria" },
+        { "id": "04", "text": "Arranging official translations and notarization wherever necessary" },
+        { "id": "05", "text": "Handling apostille and legalization procedures according to Austrian standards" },
+        { "id": "06", "text": "Strict deadline tracking and monitoring of document readiness statuses" },
+        { "id": "07", "text": "Final review of the full package and direct submission to the university" }
+      ]
     },
     "admission": {
       "title": "Guaranteed Admission",
