@@ -2,6 +2,7 @@
 
 import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
+import {openTelegram} from "@/lib/messenger";
 import {motion} from "framer-motion";
 import {
     AccessTime,
@@ -88,10 +89,7 @@ export default function Home() {
     const handleTelegramSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!phone) return;
-        const message = t('contact.telegram_message', {phone: phone});
-        const fullUrl = `https://t.me/solomchakju?text=${encodeURIComponent(message)}`;
-        window.open(fullUrl, '_blank');
-        setPhone("");
+        openTelegram(t('contact.telegram_message', { phone }));
     };
 
     // Memoized message for direct messenger contact links
@@ -103,9 +101,7 @@ export default function Home() {
     // Handle pricing tier selection and external routing
     const handlePlanClick = (planKey: string) => {
         const planName = t(`pricing.plans.${planKey}.title`);
-        const message = t('contact.plan_message', {planName: planName});
-        const fullUrl = `https://t.me/solomchakju?text=${encodeURIComponent(message)}`;
-        window.open(fullUrl, '_blank');
+        openTelegram(t('contact.plan_message', { planName }));
     };
 
     // Phone input validation & formatting (allows only numbers and a single leading plus sign)
