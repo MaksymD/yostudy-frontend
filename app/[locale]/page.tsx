@@ -4,31 +4,28 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
-    HowToReg,
-    AssignmentTurnedIn,
-    CreditScore,
-    Quiz,
-    ContentPasteGo,
-    EditDocument,
-    ManageAccounts,
     AccessTime,
     AccountBalance,
-    AddHomeWork,
     Apartment,
     ArrowRight,
     Assignment,
+    AssignmentTurnedIn,
     Badge,
     BookmarkAdded,
     BorderColor,
     CheckCircle,
+    ContentPasteGo,
+    CreditScore,
     Description,
-    Explore,
+    EditDocument,
     FolderShared,
     Gavel,
     HealthAndSafety,
-    HelpCenter,
     HomeWork,
+    HowToReg,
     Instagram as InstagramIcon,
+    ManageAccounts,
+    Quiz,
     Rule,
     School,
     Search,
@@ -44,6 +41,14 @@ import {
 import ChatIcon from '@mui/icons-material/Chat';
 import Link from "next/link";
 import Image from "next/image";
+
+import {
+    DEFAULT_UNIVERSITY_LOGO,
+    PRICING_PLANS,
+    SECTIONS_DATA,
+    UNIVERSITY_CITIES,
+    UNIVERSITY_LOGOS
+} from "@/lib/university-data";
 
 interface Particle {
     id: number;
@@ -116,83 +121,7 @@ export default function Home() {
         setPhone(cleanInput);
     };
 
-    // Map of university names to asset paths (Keys must match the "name" fields in translation JSONs)
-    const universityLogos: Record<string, string> = {
-        "University of Vienna (1365)": "/images/universities/univie.png",
-        "TU Wien (1815)": "/images/universities/tuwien.png",
-        "WU Wien (1898)": "/images/universities/wu.png",
-        "Medical University of Vienna (2004)": "/images/universities/meduniwien.png",
-        "BOKU University (1872)": "/images/universities/boku.png",
-        "MODUL University Vienna (2007)": "/images/universities/modul.png",
-        "Webster Vienna Private University (1981)": "/images/universities/webster.png",
-        "Sigmund Freud University (2005)": "/images/universities/sfu.png",
-
-        "University of Graz (1585)": "/images/universities/uni-graz.png",
-        "Graz University of Technology (1811)": "/images/universities/tugraz.png",
-        "Medical University of Graz (2004)": "/images/universities/medunigraz.png",
-
-        "University of Innsbruck (1669)": "/images/universities/uibk.png",
-        "MCI Innsbruck (1995)": "/images/universities/mci.png",
-        "Medical University of Innsbruck (2004)": "/images/universities/meduniinnsbruck.png",
-
-        "Paris Lodron University Salzburg (1622)": "/images/universities/plus.png",
-        "Mozarteum University Salzburg (1841)": "/images/universities/mozarteum.png",
-        "FH Salzburg University of Applied Sciences (1995)": "/images/universities/fh-salzburg.png",
-
-        "Johannes Kepler University Linz (1966)": "/images/universities/jku.png",
-        "University of Arts Linz (1973)": "/images/universities/ufg.png",
-        "FH Oberösterreich – University of Applied Sciences (1994)": "/images/universities/fh-ooe.png",
-
-        "Alpen-Adria University Klagenfurt (1970)": "/images/universities/aau.png",
-        "FH Kärnten – University of Applied Sciences (1995)": "/images/universities/fh-kaernten.png",
-        "AAU School of Management (2002)": "/images/universities/aau-som.png"
-    };
-
-    const defaultLogo = "/images/universities/default-university.png";
-
-    // Static sections configuration mapping to translation keys and icons
-    const sectionsData = [
-        {id: "consultation-info", key: "consultation", icon: HelpCenter, color: "from-blue-600/10"},
-        {id: "documents", key: "documents", icon: Description, color: "from-purple-600/10"},
-        {id: "admission", key: "admission", icon: School, color: "from-red-600/10"},
-        {id: "dormitory", key: "dormitory", icon: AddHomeWork, color: "from-amber-600/10"},
-        {id: "adaptation", key: "adaptation", icon: Explore, color: "from-emerald-600/10"},
-    ];
-
-    const pricingPlans = [
-        {
-            key: "basic",
-            price: "€1350",
-            featuresCount: 4,
-            isPopular: false,
-            hoverStyle: "hover:border-blue-500/40 dark:hover:border-blue-500/30 hover:shadow-2xl hover:shadow-blue-500/10"
-        },
-        {
-            key: "optimal",
-            price: "€2200",
-            featuresCount: 5,
-            isPopular: true,
-            hoverStyle: "border-red-600/50 dark:border-red-600/40 shadow-xl shadow-red-600/10 hover:border-red-600/70 hover:shadow-2xl hover:shadow-red-600/20"
-        },
-        {
-            key: "premium",
-            price: "€3000",
-            featuresCount: 5,
-            isPopular: false,
-            hoverStyle: "hover:border-amber-500/40 dark:hover:border-amber-500/30 hover:shadow-2xl hover:shadow-amber-500/10"
-        }
-    ];
-
-    const universityCities = [
-        "vienna",
-        "graz",
-        "innsbruck",
-        "salzburg",
-        "linz",
-        "klagenfurt"
-    ];
-
-    // Safely retrieve typed translation object for the currently selected city
+    // Map of university names to asset paths
     const selectedUniversityData = t.raw(
         `sections.consultation.universities.${selectedCity}`
     ) as {
@@ -309,7 +238,7 @@ export default function Home() {
 
                 {/* SERVICES SECTION */}
                 <div className="w-full max-w-5xl space-y-16 mt-24">
-                    {sectionsData.map((section, index) => {
+                    {SECTIONS_DATA.map((section, index) => {
                         const IconElement = section.icon;
                         return (
                             <motion.section
@@ -324,13 +253,14 @@ export default function Home() {
 
                                 {/* Service Header Info */}
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                                    <div className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
+                                    <div
+                                        className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
                                         <IconElement className="w-6 h-6"/>
                                     </div>
                                     <div>
-                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">
-                            {t('service_badge')}
-                        </span>
+                                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">
+                                            {t('service_badge')}
+                                        </span>
                                         <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">
                                             {t(`menu.${section.key}`)}
                                         </h2>
@@ -348,15 +278,15 @@ export default function Home() {
                                 {/* SECTION CONTENT: Consultation & University Switcher */}
                                 {section.key === "consultation" && selectedUniversityData && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
-                                        <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
+                                        <div
+                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
                                             <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
                                                 {t("sections.consultation.text")}
                                             </p>
                                         </div>
-
-                                        {/* Regional Tabs Switcher */}
-                                        <div className="flex flex-wrap gap-2 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
-                                            {universityCities.map((city) => (
+                                        <div
+                                            className="flex flex-wrap gap-2 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                                            {UNIVERSITY_CITIES.map((city) => (
                                                 <button
                                                     key={city}
                                                     onClick={() => setSelectedCity(city)}
@@ -378,18 +308,19 @@ export default function Home() {
                                         {/* Dynamic Universities Grid */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                                             {selectedUniversityData.list?.map((university, index) => {
-                                                const logoPath = universityLogos[university.name] || defaultLogo;
+                                                const logoPath = UNIVERSITY_LOGOS[university.name] || DEFAULT_UNIVERSITY_LOGO;
                                                 return (
                                                     <motion.div
                                                         key={index}
-                                                        initial={{ opacity: 0, y: 10 }}
-                                                        animate={{ opacity: 1, y: 0 }}
-                                                        transition={{ duration: 0.25 }}
+                                                        initial={{opacity: 0, y: 10}}
+                                                        animate={{opacity: 1, y: 0}}
+                                                        transition={{duration: 0.25}}
                                                         className="flex flex-col justify-between p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/30 backdrop-blur-md hover:border-red-600/30 dark:hover:border-red-600/30 transition-all shadow-sm group min-h-[180px]"
                                                     >
                                                         <div>
                                                             <div className="flex items-start gap-4 mb-3">
-                                                                <div className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
+                                                                <div
+                                                                    className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
                                                                     <Image
                                                                         src={logoPath}
                                                                         alt={`${university.name} logo`}
@@ -413,7 +344,8 @@ export default function Home() {
                                                         </div>
 
                                                         <div className="flex justify-end pt-1">
-                                                            <span className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold tracking-wide">
+                                                            <span
+                                                                className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold tracking-wide">
                                                                 {university.fac} {t("sections.consultation.faculties")}
                                                             </span>
                                                         </div>
@@ -427,14 +359,18 @@ export default function Home() {
                                 {/* SECTION CONTENT: Documents Workflow */}
                                 {section.key === "documents" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
-                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
-                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                        <div
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div
+                                                className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
                                                 <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.documents.text")}
                                                 </p>
                                             </div>
-                                            <div className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                            <div
+                                                className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
+                                                <div
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/documents/documents_1.png"
                                                     alt="YO Study Documents Visual Team"
@@ -452,7 +388,10 @@ export default function Home() {
                                                 {t("sections.documents.features_title")}
                                             </h4>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                {(t.raw("sections.documents.features") as { id: string; text: string }[]).map((feature, i) => {
+                                                {(t.raw("sections.documents.features") as {
+                                                    id: string;
+                                                    text: string
+                                                }[]).map((feature, i) => {
                                                     const iconsMap: Record<string, React.ElementType> = {
                                                         "01": Search,
                                                         "02": Assignment,
@@ -464,12 +403,15 @@ export default function Home() {
                                                     };
                                                     const FeatureIcon = iconsMap[feature.id] || Assignment;
                                                     return (
-                                                        <div key={i} className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
-                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                        <div key={i}
+                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                            <div
+                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
                                                             <div className="space-y-1">
-                                                                <span className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                                <span
+                                                                    className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
                                                                 <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
@@ -483,7 +425,8 @@ export default function Home() {
                                 {/* SECTION CONTENT: Admission Steps */}
                                 {section.key === "admission" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
-                                        <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
+                                        <div
+                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
                                             <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
                                                 {t("sections.admission.text")}
                                             </p>
@@ -495,7 +438,10 @@ export default function Home() {
                                             </h4>
 
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                {(t.raw("sections.admission.features") as { id: string; text: string }[]).map((feature, i) => {
+                                                {(t.raw("sections.admission.features") as {
+                                                    id: string;
+                                                    text: string
+                                                }[]).map((feature, i) => {
                                                     const iconsMap: Record<string, React.ElementType> = {
                                                         "01": HowToReg,
                                                         "02": AssignmentTurnedIn,
@@ -511,21 +457,16 @@ export default function Home() {
                                                     const FeatureIcon = iconsMap[feature.id] || AssignmentTurnedIn;
 
                                                     return (
-                                                        <div
-                                                            key={i}
-                                                            className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
-                                                        >
-                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                        <div key={i}
+                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                            <div
+                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
-
                                                             <div className="space-y-1">
-                                                                <span className="text-xs font-bold text-red-600 tracking-wider block">
-                                                                    {feature.id}
-                                                                </span>
-                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
-                                                                    {feature.text}
-                                                                </p>
+                                                                <span
+                                                                    className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
                                                     );
@@ -538,14 +479,18 @@ export default function Home() {
                                 {/* SECTION CONTENT: Dormitory Booking */}
                                 {section.key === "dormitory" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
-                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
-                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                        <div
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div
+                                                className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
                                                 <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.dormitory.text")}
                                                 </p>
                                             </div>
-                                            <div className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
-                                                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                            <div
+                                                className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
+                                                <div
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/dormitory/dormitory_1.png"
                                                     alt="YO Study Dormitory Premium Selection"
@@ -558,7 +503,10 @@ export default function Home() {
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {(t.raw("sections.dormitory.features") as { id: string; text: string }[]).map((feature, i) => {
+                                            {(t.raw("sections.dormitory.features") as {
+                                                id: string;
+                                                text: string
+                                            }[]).map((feature, i) => {
                                                 const iconsMap: Record<string, React.ElementType> = {
                                                     "01": Apartment,
                                                     "02": BookmarkAdded,
@@ -569,21 +517,16 @@ export default function Home() {
                                                 const FeatureIcon = iconsMap[feature.id] || Apartment;
 
                                                 return (
-                                                    <div
-                                                        key={i}
-                                                        className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
-                                                    >
-                                                        <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                    <div key={i}
+                                                         className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                        <div
+                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                             <FeatureIcon className="w-6 h-6"/>
                                                         </div>
-
                                                         <div className="space-y-1">
-                                                            <span className="text-xs font-bold text-red-600 tracking-wider block">
-                                                                {feature.id}
-                                                            </span>
-                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
-                                                                {feature.text}
-                                                            </p>
+                                                            <span
+                                                                className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
                                                         </div>
                                                     </div>
                                                 );
@@ -595,8 +538,10 @@ export default function Home() {
                                 {/* SECTION CONTENT: Student Adaptation */}
                                 {section.key === "adaptation" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
-                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
-                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                        <div
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div
+                                                className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
                                                 <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.adaptation.text")}
                                                 </p>
@@ -632,12 +577,15 @@ export default function Home() {
                                                     };
                                                     const FeatureIcon = iconsMap[feature.id] || SupportAgent;
                                                     return (
-                                                        <div key={i} className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
-                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                        <div key={i}
+                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                            <div
+                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
                                                             <div className="space-y-1">
-                                                                <span className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                                <span
+                                                                    className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
                                                                 <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
@@ -645,8 +593,8 @@ export default function Home() {
                                                 })}
                                             </div>
 
-                                            {/* Security Note Footer Block */}
-                                            <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full mt-4">
+                                            <div
+                                                className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full mt-4">
                                                 <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5"/>
                                                 <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
                                                     {t("sections.adaptation.footer_text")}
@@ -655,7 +603,6 @@ export default function Home() {
                                         </div>
                                     </div>
                                 )}
-
                             </motion.section>
                         );
                     })}
@@ -673,7 +620,7 @@ export default function Home() {
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch px-2 sm:px-0 pt-4">
-                        {pricingPlans.map((plan) => (
+                        {PRICING_PLANS.map((plan) => (
                             <div key={plan.key}
                                  className={`relative flex flex-col justify-between backdrop-blur-xl border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${plan.isPopular ? 'bg-white/65 dark:bg-zinc-900/65 border-red-600/50 ring-4 ring-red-600/5 lg:scale-[1.03] z-10 shadow-xl shadow-zinc-950/10' : 'bg-white/25 dark:bg-zinc-900/25 border-white/40 dark:border-zinc-800/40 shadow-xl shadow-zinc-950/5 opacity-[0.98] hover:opacity-100'}`}>
                                 {plan.isPopular && <span
