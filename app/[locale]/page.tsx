@@ -4,6 +4,13 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
+    HowToReg,
+    AssignmentTurnedIn,
+    CreditScore,
+    Quiz,
+    ContentPasteGo,
+    EditDocument,
+    ManageAccounts,
     AccessTime,
     AccountBalance,
     AddHomeWork,
@@ -495,14 +502,59 @@ export default function Home() {
 
                                         {/* Інформаційний блок: Вступ */}
                                         <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
-
-                                            {/* Основний текст секції вступу */}
                                             <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
                                                 {t("sections.admission.text")}
                                             </p>
                                         </div>
 
-                                        {/* Далі може йти ваш існуючий контент для секції вступу (наприклад, кроки, дедлайни тощо) */}
+                                        {/* Список того, що входить до послуги */}
+                                        <div className="space-y-6 pt-2">
+                                            <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+                                                {t("sections.admission.features_title")}
+                                            </h4>
+
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {(t.raw("sections.admission.features") as { id: string; text: string }[]).map((feature, i) => {
+                                                    const iconsMap: Record<string, React.ElementType> = {
+                                                        "01": HowToReg,
+                                                        "02": AssignmentTurnedIn,
+                                                        "03": ContentPasteGo,
+                                                        "04": School,
+                                                        "05": EditDocument,
+                                                        "06": Description,
+                                                        "07": Quiz,
+                                                        "08": ManageAccounts,
+                                                        "09": Badge,
+                                                        "10": CreditScore
+                                                    };
+
+                                                    const FeatureIcon = iconsMap[feature.id] || AssignmentTurnedIn;
+
+                                                    return (
+                                                        <div
+                                                            key={i}
+                                                            className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
+                                                        >
+                                                            {/* Іконка у фірмовому стилі */}
+                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                <FeatureIcon className="w-6 h-6"/>
+                                                            </div>
+
+                                                            {/* Контент картки */}
+                                                            <div className="space-y-1">
+                                <span className="text-xs font-bold text-red-600 tracking-wider block">
+                                    {feature.id}
+                                </span>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
+                                                                    {feature.text}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
+                                        </div>
+
                                     </div>
                                 )}
 

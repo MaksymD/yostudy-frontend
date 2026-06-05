@@ -194,19 +194,83 @@
       "text": "Document preparation is one of the most critical stages of admission in Austria. Our team fully accompanies this process, monitoring every single detail from the first consultation to university submission. We analyze the specific requirements of your chosen institution, create a tailored list of necessary documents, and help avoid mistakes that could lead to delays or rejection.\n\nWe organize official translations, notarized copies, apostilles, and legalization. Every procedure is performed strictly when required by the university or Austrian authorities — we do not impose unnecessary services or create extra expenses. We take full responsibility for the correctness of your paperwork so you can focus on planning your future.",
       "features_title": "Our support includes:",
       "features": [
-        { "id": "01", "text": "In-depth analysis of the specific requirements of your chosen university" },
-        { "id": "02", "text": "Compiling a complete and comprehensive document package for admission" },
-        { "id": "03", "text": "Verifying the compliance of all documents with the educational institution's criteria" },
-        { "id": "04", "text": "Arranging official translations and notarization wherever necessary" },
-        { "id": "05", "text": "Handling apostille and legalization procedures according to Austrian standards" },
-        { "id": "06", "text": "Strict deadline tracking and monitoring of document readiness statuses" },
-        { "id": "07", "text": "Final review of the full package and direct submission to the university" }
+        {
+          "id": "01",
+          "text": "In-depth analysis of the specific requirements of your chosen university"
+        },
+        {
+          "id": "02",
+          "text": "Compiling a complete and comprehensive document package for admission"
+        },
+        {
+          "id": "03",
+          "text": "Verifying the compliance of all documents with the educational institution's criteria"
+        },
+        {
+          "id": "04",
+          "text": "Arranging official translations and notarization wherever necessary"
+        },
+        {
+          "id": "05",
+          "text": "Handling apostille and legalization procedures according to Austrian standards"
+        },
+        {
+          "id": "06",
+          "text": "Strict deadline tracking and monitoring of document readiness statuses"
+        },
+        {
+          "id": "07",
+          "text": "Final review of the full package and direct submission to the university"
+        }
       ]
     },
     "admission": {
       "title": "Guaranteed Admission",
       "subtitle": "Official enrollment in your chosen university in Austria.",
-      "text": "We completely oversee the university application process, handle official communication with the admissions committee, and promptly resolve any issues that arise right up until you receive your official letter of acceptance (Zulassungsbescheid)."
+      "text": "We completely oversee the university application process, handle official communication with the admissions committee, and promptly resolve any issues that arise right up until you receive your official letter of acceptance (Zulassungsbescheid).",
+      "features_title": "The service includes:",
+      "features": [
+        {
+          "id": "01",
+          "text": "Registration for admission language exams (German A2–C1 or English IELTS, TOEFL)"
+        },
+        {
+          "id": "02",
+          "text": "Full monitoring of the admission process and communication with the university"
+        },
+        {
+          "id": "03",
+          "text": "Registration for the university placement test"
+        },
+        {
+          "id": "04",
+          "text": "Registration for university preparation courses (VWU) or language courses"
+        },
+        {
+          "id": "05",
+          "text": "Registration for the entrance exam (if applicable)"
+        },
+        {
+          "id": "06",
+          "text": "Provision of all necessary preparation materials for the entrance exam"
+        },
+        {
+          "id": "07",
+          "text": "Passing the mandatory OSA test"
+        },
+        {
+          "id": "08",
+          "text": "Creating a personal student account"
+        },
+        {
+          "id": "09",
+          "text": "Arranging the student ID card"
+        },
+        {
+          "id": "10",
+          "text": "Assistance with paying the ÖH-Beitrag student union fee"
+        }
+      ]
     },
     "dormitory": {
       "title": "Dormitory Search and Booking",
@@ -214,11 +278,26 @@
       "text": "Moving to Austria begins with finding accommodation, as official confirmation of residence is a mandatory requirement for obtaining a student visa. We take over this entire process and select a dormitory or student residence according to your preferences, city of study, and budget. Thanks to our cooperation with verified residences across Austria, we offer the best options at competitive prices without unnecessary overpayments.\n\nYou do not need to handle correspondence on your own or figure out complex Austrian rental regulations. Our goal is for the student to arrive with everything ready, and for parents to feel absolutely confident in their child's safety and comfort. YO STUDY — we organize your student housing from the very first request to check-in.",
       "features_title": "We accompany the entire process from start to finish:",
       "features": [
-        { "id": "01", "text": "We select housing tailored to your request and budget — from affordable student rooms to modern premium-class residences" },
-        { "id": "02", "text": "We book the room in the chosen residence" },
-        { "id": "03", "text": "We prepare and approve all required documents" },
-        { "id": "04", "text": "We arrange the official signing of the lease agreement" },
-        { "id": "05", "text": "We provide official confirmation of accommodation required for your visa and admission" }
+        {
+          "id": "01",
+          "text": "We select housing tailored to your request and budget — from affordable student rooms to modern premium-class residences"
+        },
+        {
+          "id": "02",
+          "text": "We book the room in the chosen residence"
+        },
+        {
+          "id": "03",
+          "text": "We prepare and approve all required documents"
+        },
+        {
+          "id": "04",
+          "text": "We arrange the official signing of the lease agreement"
+        },
+        {
+          "id": "05",
+          "text": "We provide official confirmation of accommodation required for your visa and admission"
+        }
       ]
     },
     "adaptation": {
@@ -227,12 +306,30 @@
       "text": "We provide full student support after your relocation and handle all key organizational matters, allowing you to fully focus on your studies and new opportunities.",
       "footer_text": "We stay by your side not only until your admission but throughout your entire adaptation period in Austria.",
       "features": [
-        { "id": "01", "text": "Processing of a student residence permit or temporary protection status" },
-        { "id": "02", "text": "Residential address registration and preparation of required documents" },
-        { "id": "03", "text": "Opening a bank account and obtaining a bank card" },
-        { "id": "04", "text": "Arranging medical insurance" },
-        { "id": "05", "text": "Setting up mobile communication and getting a SIM card" },
-        { "id": "06", "text": "Ongoing consultation and support for administrative and daily life issues" }
+        {
+          "id": "01",
+          "text": "Processing of a student residence permit or temporary protection status"
+        },
+        {
+          "id": "02",
+          "text": "Residential address registration and preparation of required documents"
+        },
+        {
+          "id": "03",
+          "text": "Opening a bank account and obtaining a bank card"
+        },
+        {
+          "id": "04",
+          "text": "Arranging medical insurance"
+        },
+        {
+          "id": "05",
+          "text": "Setting up mobile communication and getting a SIM card"
+        },
+        {
+          "id": "06",
+          "text": "Ongoing consultation and support for administrative and daily life issues"
+        }
       ]
     }
   },
