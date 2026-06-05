@@ -4,17 +4,12 @@ import {useEffect, useMemo, useState} from "react";
 import {useTranslations} from "next-intl";
 import {motion} from "framer-motion";
 import {
-    Search,
-    Assignment,
-    Rule,
-    Translate,
-    Gavel,
     AccessTime,
-    Send,
     AccountBalance,
     AddHomeWork,
     Apartment,
     ArrowRight,
+    Assignment,
     Badge,
     BookmarkAdded,
     BorderColor,
@@ -22,15 +17,20 @@ import {
     Description,
     Explore,
     FolderShared,
+    Gavel,
     HealthAndSafety,
     HelpCenter,
     HomeWork,
     Instagram as InstagramIcon,
+    Rule,
     School,
+    Search,
+    Send,
     Shield,
     SimCard,
     SupportAgent,
     Telegram as TelegramIcon,
+    Translate,
     VerifiedUser,
     WhatsApp as WhatsAppIcon
 } from "@mui/icons-material";
@@ -304,120 +304,160 @@ export default function Home() {
                     {sectionsData.map((section, index) => {
                         const IconElement = section.icon;
                         return (
-                            <motion.section key={section.id} id={section.id} initial={{opacity: 0, y: 50}}
-                                            whileInView={{opacity: 1, y: 0}} viewport={{once: true, margin: "-100px"}}
-                                            transition={{duration: 0.5, delay: index * 0.05}}
-                                            className={`w-full bg-gradient-to-br ${section.color} to-white/20 dark:to-zinc-900/10 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 sm:p-10 shadow-xl shadow-zinc-950/5 scroll-mt-24 hover:border-red-600/30 transition-all duration-300`}>
+                            <motion.section
+                                key={section.id}
+                                id={section.id}
+                                initial={{opacity: 0, y: 50}}
+                                whileInView={{opacity: 1, y: 0}}
+                                viewport={{once: true, margin: "-100px"}}
+                                transition={{duration: 0.5, delay: index * 0.05}}
+                                className={`w-full bg-gradient-to-br ${section.color} to-white/20 dark:to-zinc-900/10 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 sm:p-10 shadow-xl shadow-zinc-950/5 scroll-mt-24 hover:border-red-600/30 transition-all duration-300`}
+                            >
+
+                                {/* 1. БЕЙДЖ ТА НАЗВА ПОСЛУГИ */}
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
-                                    <div
-                                        className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
-                                        <IconElement className="w-6 h-6"/></div>
+                                    <div className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
+                                        <IconElement className="w-6 h-6"/>
+                                    </div>
                                     <div>
-                                        <span
-                                            className="text-xs font-semibold text-red-600 uppercase tracking-wider">{t('service_badge')}</span>
-                                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">{t(`menu.${section.key}`)}</h2>
+                        <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">
+                            {t('service_badge')}
+                        </span>
+                                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">
+                                            {t(`menu.${section.key}`)}
+                                        </h2>
                                     </div>
                                 </div>
-                                <h3 className="text-base sm:text-lg font-medium text-zinc-800 dark:text-zinc-200 mb-3 italic">
-                                    {t(`sections.${section.key}.subtitle`)}
-                                </h3>
 
-                                <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                                    {t(`sections.${section.key}.text`)}
-                                </p>
+                                {/* 2. ПРЕМІУМ ЗАГОЛОВОК (ИСПРАВЛЕНО: Теперь блок корректно закрывается) */}
+                                <div className="p-0 flex flex-col justify-center space-y-4 z-10 mb-8 w-full max-w-none">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white leading-tight tracking-normal whitespace-normal break-words w-full block">
+                                        {t(`sections.${section.key}.subtitle`)}
+                                    </h3>
+                                    {/* Червона акцентна лінія */}
+                                    <div className="w-12 h-[2px] bg-red-600 rounded-full"/>
+                                </div>
 
-                                {/* КОНТЕНТ ДЛЯ СЕКЦІЇ АДАПТАЦІЇ У СТИЛІ МАКЕТУ */}
-                                {section.key === "adaptation" && (
-                                    <div className="mt-10 space-y-8">
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {(t.raw("sections.adaptation.features") as {
-                                                id: string;
-                                                text: string
-                                            }[]).map((feature, i) => {
-                                                const iconsMap: Record<string, React.ElementType> = {
-                                                    "01": Badge,
-                                                    "02": HomeWork,
-                                                    "03": AccountBalance,
-                                                    "04": HealthAndSafety,
-                                                    "05": SimCard,
-                                                    "06": SupportAgent
-                                                };
+                                {/* ============================================================== */}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ КОНСУЛЬТАЦІЙ (ВЫБОР УНИВЕРСИТЕТОВ)  === */}
+                                {/* ============================================================== */}
+                                {section.key === "consultation" && selectedUniversityData && (
+                                    <div className="mt-6 space-y-8 animate-fadeIn">
+                                        {/* Інформаційний блок: Вступ до консультації */}
+                                        <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
+                                            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                                {t("sections.consultation.text")}
+                                            </p>
+                                        </div>
+                                        {/* Селектор городов */}
+                                        <div className="flex flex-wrap gap-2 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                                            {universityCities.map((city) => (
+                                                <button
+                                                    key={city}
+                                                    onClick={() => setSelectedCity(city)}
+                                                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer uppercase tracking-wider ${
+                                                        selectedCity === city
+                                                            ? "bg-red-600 text-white shadow-md shadow-red-600/10"
+                                                            : "bg-white/50 dark:bg-zinc-900/40 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50"
+                                                    }`}
+                                                >
+                                                    {t(`sections.consultation.universities.${city}.city`)}
+                                                </button>
+                                            ))}
+                                        </div>
 
-                                                const FeatureIcon = iconsMap[feature.id] || SupportAgent;
+                                        {/* Описание выбранного региона */}
+                                        <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
+                                            {selectedUniversityData.desc}
+                                        </p>
 
+                                        {/* Список ВУЗов выбранного города */}
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                                            {selectedUniversityData.list?.map((university, index) => {
+                                                const logoPath = universityLogos[university.name] || defaultLogo;
                                                 return (
-                                                    <div
-                                                        key={i}
-                                                        className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
+                                                    <motion.div
+                                                        key={index}
+                                                        initial={{ opacity: 0, y: 10 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ duration: 0.25 }}
+                                                        className="flex flex-col justify-between p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/30 backdrop-blur-md hover:border-red-600/30 dark:hover:border-red-600/30 transition-all shadow-sm group min-h-[180px]"
                                                     >
-                                                        <div
-                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
-                                                            <FeatureIcon className="w-6 h-6"/>
-                                                        </div>
-                                                        <div className="space-y-1">
-                            <span className="text-xs font-bold text-red-600 tracking-wider block">
-                                {feature.id}
-                            </span>
-                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
-                                                                {feature.text}
+                                                        <div>
+                                                            {/* Верхняя часть: Логотип + Название */}
+                                                            <div className="flex items-start gap-4 mb-3">
+                                                                {/* Логотип университета */}
+                                                                <div className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
+                                                                    <Image
+                                                                        src={logoPath}
+                                                                        alt={`${university.name} logo`}
+                                                                        width={40}
+                                                                        height={40}
+                                                                        className="object-contain max-w-full max-h-full"
+                                                                        priority={index < 4}
+                                                                    />
+                                                                </div>
+
+                                                                {/* Название ВУЗа */}
+                                                                <div className="flex-grow pt-0.5">
+                                                                    <h4 className="text-base font-bold text-zinc-950 dark:text-white leading-snug">
+                                                                        {university.name}
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+
+                                                            {/* Описание университета */}
+                                                            <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+                                                                {university.text}
                                                             </p>
                                                         </div>
-                                                    </div>
+
+                                                        {/* Нижня часть: Фирменный бейдж факультетов */}
+                                                        <div className="flex justify-end pt-1">
+                    <span className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold tracking-wide">
+                        {university.fac} {t("sections.consultation.faculties")}
+                    </span>
+                                                        </div>
+                                                    </motion.div>
                                                 );
                                             })}
                                         </div>
-
-                                        <div
-                                            className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full">
-                                            <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5"/>
-                                            <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
-                                                {t("sections.adaptation.footer_text")}
-                                            </p>
-                                        </div>
                                     </div>
                                 )}
-                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ ДОКУМЕНТІВ (БЕЗ ДУБЛЮВАННЯ + ФОТО ВГОРІ) === */}
+
+                                {/* ============================================================== */}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ ДОКУМЕНТІВ                          === */}
+                                {/* ============================================================== */}
                                 {section.key === "documents" && (
-                                    <div className="mt-6 space-y-8">
+                                    <div className="mt-6 space-y-8 animate-fadeIn">
 
-                                        {/* === ПРЕМІУМ-ФОТО БАНЕР НА САМОМУ ВГОРІ (НА ВСЮ ШИРИНУ, БЕЗ ЗАТЕМНЕННЯ ОБЛИЧ) === */}
-                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-[#f4f4f4] dark:bg-zinc-950 shadow-xl h-[240px] sm:h-[350px] md:h-[450px] lg:h-[500px] transition-all duration-300">
-
-                                            {/* Контейнер для фото — тепер знову на всю ширину (w-full), щоб не було відступів */}
-                                            <div className="absolute inset-0 z-0 pointer-events-none">
+                                        {/* Головний банер секції */}
+                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                    {t("sections.documents.text")}
+                                                </p>
+                                            </div>
+                                            {/* Блок картинки — тепер один в один як у dormitory */}
+                                            <div className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
+                                                {/* Градієнт відновлено до оригінальних параметрів для м'якого розмиття меж */}
+                                                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/documents/documents_1.png"
                                                     alt="YO Study Documents Visual Team"
                                                     fill
-                                                    sizes="100vw"
-                                                    /*
-                                                      object-cover розтягує на всю довжину,
-                                                      а lg:object-[85%_center] зміщує кадр так, щоб люди справа не обрізалися і стояли чітко в банері
-                                                    */
-                                                    className="object-cover object-center lg:object-[85%_center]"
+                                                    sizes="(max-width: 768px) 100vw, 45vw"
+                                                    className="object-cover object-center"
                                                     priority
                                                 />
                                             </div>
-
-                                            {/*
-       М'ЯКИЙ ГРАДІЄНТ ТІЛЬКИ З ЛІВОГО КРАЮ БАНЕРА (Ширина всього 25%):
-       Він створює плавний перехід від початку банера вглиб фотографії,
-       але взагалі не доходить до центру та правої частини, де стоять люди.
-    */}
-                                            <div className="absolute inset-y-0 left-0 w-full lg:w-[25%] z-10 bg-gradient-to-r from-[#f4f4f4] via-[#f4f4f4]/60 to-transparent dark:from-zinc-950 dark:via-zinc-950/60 pointer-events-none" />
-
-                                            {/* М'який нижній перехід для мобільних */}
-                                            <div className="absolute inset-x-0 bottom-0 h-16 z-10 bg-gradient-to-t from-[#f4f4f4] to-transparent dark:from-zinc-950 lg:hidden pointer-events-none" />
-
                                         </div>
 
-                                        {/* 2. БЛОК СУПРОВОДУ ТА КАРТОК З ІКОНКАМИ */}
+                                        {/* Список фіч/документів */}
                                         <div className="space-y-6 pt-2">
                                             <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
                                                 {t("sections.documents.features_title")}
                                             </h4>
-
-                                            {/* Двоколонкова сітка карток (01 - 07) */}
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                                 {(t.raw("sections.documents.features") as { id: string; text: string }[]).map((feature, i) => {
                                                     const iconsMap: Record<string, React.ElementType> = {
@@ -429,47 +469,72 @@ export default function Home() {
                                                         "06": AccessTime,
                                                         "07": Send
                                                     };
-
                                                     const FeatureIcon = iconsMap[feature.id] || Assignment;
-
                                                     return (
-                                                        <div
-                                                            key={i}
-                                                            className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
-                                                        >
-                                                            {/* Ліва частина: Червона фірмова іконка */}
+                                                        <div key={i} className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
                                                             <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
-                                                                <FeatureIcon className="w-6 h-6" />
+                                                                <FeatureIcon className="w-6 h-6"/>
                                                             </div>
-
-                                                            {/* Права частина: Номер + Текст */}
                                                             <div className="space-y-1">
-                                <span className="text-xs font-bold text-red-600 tracking-wider block">
-                                    {feature.id}
-                                </span>
-                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
-                                                                    {feature.text}
-                                                                </p>
+                                                                <span className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
                                                     );
                                                 })}
                                             </div>
                                         </div>
-
                                     </div>
                                 )}
 
+                                {/* ============================================================== */}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ ВСТУПУ (ADMISSION)                  === */}
+                                {/* ============================================================== */}
+                                {section.key === "admission" && (
+                                    <div className="mt-6 space-y-8 animate-fadeIn">
+
+                                        {/* Інформаційний блок: Вступ */}
+                                        <div className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
+
+                                            {/* Основний текст секції вступу */}
+                                            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                                {t("sections.admission.text")}
+                                            </p>
+                                        </div>
+
+                                        {/* Далі може йти ваш існуючий контент для секції вступу (наприклад, кроки, дедлайни тощо) */}
+                                    </div>
+                                )}
+
+                                {/* ============================================================== */}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ ГУРТОЖИТКІВ                         === */}
+                                {/* ============================================================== */}
                                 {section.key === "dormitory" && (
-                                    <div className="mt-10 space-y-6">
-                                        <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
-                                            {t("sections.dormitory.features_title")}
-                                        </h4>
+                                    <div className="mt-6 space-y-8 animate-fadeIn">
+
+                                        {/* Головний банер секції */}
+                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                    {t("sections.dormitory.text")}
+                                                </p>
+                                            </div>
+                                            <div className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                                <Image
+                                                    src="/images/dormitory/dormitory_1.png"
+                                                    alt="YO Study Dormitory Premium Selection"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 45vw"
+                                                    className="object-cover object-center"
+                                                    priority
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Сітка переваг/особливостей гуртожитків */}
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            {(t.raw("sections.dormitory.features") as {
-                                                id: string;
-                                                text: string
-                                            }[]).map((feature, i) => {
+                                            {(t.raw("sections.dormitory.features") as { id: string; text: string }[]).map((feature, i) => {
                                                 const iconsMap: Record<string, React.ElementType> = {
                                                     "01": Apartment,
                                                     "02": BookmarkAdded,
@@ -485,10 +550,12 @@ export default function Home() {
                                                         key={i}
                                                         className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm"
                                                     >
-                                                        <div
-                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                        {/* Контейнер для іконки */}
+                                                        <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                             <FeatureIcon className="w-6 h-6"/>
                                                         </div>
+
+                                                        {/* Текстова частина */}
                                                         <div className="space-y-1">
                             <span className="text-xs font-bold text-red-600 tracking-wider block">
                                 {feature.id}
@@ -501,106 +568,86 @@ export default function Home() {
                                                 );
                                             })}
                                         </div>
+
                                     </div>
                                 )}
 
-                                {section.key === "consultation" && (
-                                    <div className="mt-10">
-                                        <div className="mb-8">
-                                            <h4 className="text-2xl font-bold text-zinc-900 dark:text-white mb-3">
-                                                {t("sections.consultation.universities_title")}
-                                            </h4>
+                                {/* ============================================================== */}
+                                {/* === КОНТЕНТ ДЛЯ СЕКЦІЇ АДАПТАЦІЇ                           === */}
+                                {/* ============================================================== */}
+                                {section.key === "adaptation" && (
+                                    <div className="mt-6 space-y-8 animate-fadeIn">
 
+                                        {/* Головний банер секції */}
+                                        <div className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            <div className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
+                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                    {t("sections.adaptation.text")}
+                                                </p>
+                                            </div>
+                                            <div
+                                                className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden flex items-end">
+                                                {/* Градієнт залишається на місці, м'яко розмиваючи лівий край */}
+                                                <div
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/20 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                                {/* Фотографія зміщується праворуч на 30px, виходячи з-під темної зони градієнта */}
+                                                <Image
+                                                    src="/images/adaptation/adaptation_1.png"
+                                                    alt="YO Study Adaptation"
+                                                    fill
+                                                    sizes="(max-width: 768px) 100vw, 45vw"
+                                                    className="object-cover object-center translate-x-[30px]"
+                                                    priority
+                                                />
+                                            </div>
                                         </div>
 
-                                        {/* CITY TABS */}
-                                        <div className="flex flex-wrap gap-3 mb-8">
-                                            {universityCities.map((city) => (
-                                                <button
-                                                    key={city}
-                                                    onClick={() => setSelectedCity(city)}
-                                                    className={`px-5 py-2 rounded-xl font-medium transition-all cursor-pointer
-                    ${
-                                                        selectedCity === city
-                                                            ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
-                                                            : "bg-white/70 dark:bg-zinc-900/70 border border-white/50 dark:border-zinc-800 hover:bg-white dark:hover:bg-zinc-800"
-                                                    }`}
-                                                >
-                                                    {t(
-                                                        `sections.consultation.universities.${city}.city`
-                                                    )}
-                                                </button>
-                                            ))}
-                                        </div>
-
-                                        {/* CITY INFO */}
-                                        <div
-                                            className="mb-8 rounded-2xl border border-white/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 p-6">
-                                            <h5 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">
-                                                {selectedUniversityData.city}
-                                            </h5>
-
-                                            <p className="text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                                                {selectedUniversityData.desc}
-                                            </p>
-                                        </div>
-
-                                        {/* UNIVERSITIES */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            {selectedUniversityData.list.map((university, index) => {
-                                                const logoPath = universityLogos[university.name] || defaultLogo;
-
-                                                return (
-                                                    <motion.div
-                                                        key={index}
-                                                        initial={{opacity: 0, y: 10}}
-                                                        animate={{opacity: 1, y: 0}}
-                                                        transition={{duration: 0.25}}
-                                                        className="rounded-2xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-xl p-6 hover:border-red-600/30 transition-all flex flex-col justify-between"
-                                                    >
-                                                        <div>
-                                                            <div className="flex items-start gap-4 mb-4">
-                                                                <div
-                                                                    className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden">
-                                                                    <Image
-                                                                        src={logoPath}
-                                                                        alt={`${university.name} logo`}
-                                                                        width={40}
-                                                                        height={40}
-                                                                        className="object-contain max-w-full max-h-full"
-                                                                        priority={index < 4}
-                                                                    />
-                                                                </div>
-
-                                                                <div className="flex-grow">
-                                                                    <h5 className="font-bold text-zinc-900 dark:text-white leading-snug">
-                                                                        {university.name}
-                                                                    </h5>
-                                                                </div>
+                                        {/* Списоки фіч та футер */}
+                                        <div className="space-y-6">
+                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                {(t.raw("sections.adaptation.features") as {
+                                                    id: string;
+                                                    text: string
+                                                }[]).map((feature, i) => {
+                                                    const iconsMap: Record<string, React.ElementType> = {
+                                                        "01": Badge,
+                                                        "02": HomeWork,
+                                                        "03": AccountBalance,
+                                                        "04": HealthAndSafety,
+                                                        "05": SimCard,
+                                                        "06": SupportAgent
+                                                    };
+                                                    const FeatureIcon = iconsMap[feature.id] || SupportAgent;
+                                                    return (
+                                                        <div key={i} className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                            <div className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                <FeatureIcon className="w-6 h-6"/>
                                                             </div>
-
-                                                            <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
-                                                                {university.text}
-                                                            </p>
+                                                            <div className="space-y-1">
+                                                                <span className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
+                                                            </div>
                                                         </div>
+                                                    );
+                                                })}
+                                            </div>
 
-                                                        <div className="flex justify-end pt-1">
-                                                            <span
-                                                                className="px-3 py-1 rounded-lg bg-red-600/10 text-red-600 text-xs font-semibold">
-                                                                {university.fac} {t("sections.consultation.faculties")}
-                                                            </span>
-                                                        </div>
-                                                    </motion.div>
-                                                );
-                                            })}
+                                            {/* Нижній блок попередження/інфо */}
+                                            <div className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full mt-4">
+                                                <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5"/>
+                                                <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
+                                                    {t("sections.adaptation.footer_text")}
+                                                </p>
+                                            </div>
                                         </div>
+
                                     </div>
                                 )}
+
                             </motion.section>
                         );
                     })}
                 </div>
-
                 {/* PRICING PLANS SECTION */}
                 <motion.section initial={{opacity: 0, y: 40}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}}
                                 transition={{duration: 0.5}}
