@@ -130,6 +130,46 @@ export default function Home() {
         }[];
     };
 
+    const DOCUMENT_ICONS: Record<string, React.ElementType> = {
+        "01": Search,
+        "02": Assignment,
+        "03": Rule,
+        "04": Translate,
+        "05": Gavel,
+        "06": AccessTime,
+        "07": Send
+    };
+
+    const ADMISSION_ICONS: Record<string, React.ElementType> = {
+        "01": HowToReg,
+        "02": AssignmentTurnedIn,
+        "03": ContentPasteGo,
+        "04": School,
+        "05": EditDocument,
+        "06": Description,
+        "07": Quiz,
+        "08": ManageAccounts,
+        "09": Badge,
+        "10": CreditScore
+    };
+
+    const DORMITORY_ICONS: Record<string, React.ElementType> = {
+        "01": Apartment,
+        "02": BookmarkAdded,
+        "03": FolderShared,
+        "04": BorderColor,
+        "05": VerifiedUser
+    };
+
+    const ADAPTION_ICONS: Record<string, React.ElementType> = {
+        "01": Badge,
+        "02": HomeWork,
+        "03": AccountBalance,
+        "04": HealthAndSafety,
+        "05": SimCard,
+        "06": SupportAgent
+    };
+
     return (
         <div
             className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300 bg-zinc-50/50 dark:bg-zinc-950/50">
@@ -388,16 +428,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const iconsMap: Record<string, React.ElementType> = {
-                                                        "01": Search,
-                                                        "02": Assignment,
-                                                        "03": Rule,
-                                                        "04": Translate,
-                                                        "05": Gavel,
-                                                        "06": AccessTime,
-                                                        "07": Send
-                                                    };
-                                                    const FeatureIcon = iconsMap[feature.id] || Assignment;
+                                                    const FeatureIcon = DOCUMENT_ICONS[feature.id] || Assignment;
                                                     return (
                                                         <div key={i}
                                                              className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
@@ -438,19 +469,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const iconsMap: Record<string, React.ElementType> = {
-                                                        "01": HowToReg,
-                                                        "02": AssignmentTurnedIn,
-                                                        "03": ContentPasteGo,
-                                                        "04": School,
-                                                        "05": EditDocument,
-                                                        "06": Description,
-                                                        "07": Quiz,
-                                                        "08": ManageAccounts,
-                                                        "09": Badge,
-                                                        "10": CreditScore
-                                                    };
-                                                    const FeatureIcon = iconsMap[feature.id] || AssignmentTurnedIn;
+                                                    const FeatureIcon = ADMISSION_ICONS[feature.id] || AssignmentTurnedIn;
 
                                                     return (
                                                         <div key={i}
@@ -503,14 +522,7 @@ export default function Home() {
                                                 id: string;
                                                 text: string
                                             }[]).map((feature, i) => {
-                                                const iconsMap: Record<string, React.ElementType> = {
-                                                    "01": Apartment,
-                                                    "02": BookmarkAdded,
-                                                    "03": FolderShared,
-                                                    "04": BorderColor,
-                                                    "05": VerifiedUser
-                                                };
-                                                const FeatureIcon = iconsMap[feature.id] || Apartment;
+                                                const FeatureIcon = DORMITORY_ICONS[feature.id] || Apartment;
 
                                                 return (
                                                     <div key={i}
@@ -563,15 +575,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const iconsMap: Record<string, React.ElementType> = {
-                                                        "01": Badge,
-                                                        "02": HomeWork,
-                                                        "03": AccountBalance,
-                                                        "04": HealthAndSafety,
-                                                        "05": SimCard,
-                                                        "06": SupportAgent
-                                                    };
-                                                    const FeatureIcon = iconsMap[feature.id] || SupportAgent;
+                                                    const FeatureIcon = ADAPTION_ICONS[feature.id] || Apartment;
                                                     return (
                                                         <div key={i}
                                                              className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
