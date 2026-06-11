@@ -32,7 +32,7 @@ export default async function LocaleLayout({
     const messages = await getMessages();
 
     return (
-        <html lang={locale} className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+        <html lang={locale} className={`dark ${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
         <body className="min-h-full flex flex-col bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-50 transition-colors duration-300">
         <NextIntlClientProvider messages={messages} locale={locale}>
             {/* Header is displayed at the top of all pages */}
