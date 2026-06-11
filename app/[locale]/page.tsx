@@ -172,7 +172,7 @@ export default function Home() {
 
     return (
         <div
-            className="bg-grid relative min-h-[100dvh] w-full text-zinc-900 dark:text-zinc-50 overflow-x-hidden transition-colors duration-300 bg-zinc-50/50 dark:bg-zinc-950/50">
+            className="bg-grid relative min-h-[100dvh] w-full text-zinc-50 overflow-x-hidden transition-colors duration-300 bg-zinc-950/50">
 
             {/* BACKGROUND ANIMATIONS & PARTICLES */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none -z-20">
@@ -212,7 +212,7 @@ export default function Home() {
                 <section
                     className="flex flex-col items-center text-center space-y-6 md:space-y-8 mt-10 min-h-[70vh] justify-center">
                     <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}}
-                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md border border-white/60 dark:border-zinc-800/60 text-sm font-medium shadow-sm">
+                                className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/60 backdrop-blur-md border border-zinc-800/60 text-sm font-medium shadow-sm">
                         <span className="relative flex h-2 w-2">
                             <span
                                 className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
@@ -227,7 +227,7 @@ export default function Home() {
                     </motion.h1>
 
                     <motion.p initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 0.2}}
-                              className="text-sm sm:text-base md:text-xl text-zinc-500 max-w-2xl leading-relaxed px-4">
+                              className="text-sm sm:text-base md:text-xl text-zinc-400 max-w-2xl leading-relaxed px-4">
                         {t('hero.subtitle')}
                     </motion.p>
 
@@ -239,11 +239,11 @@ export default function Home() {
                         </button>
 
                         <div
-                            className="flex bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md p-1 rounded-2xl border border-white/50 dark:border-zinc-800/80 shadow-sm">
+                            className="flex bg-zinc-900/40 backdrop-blur-md p-1 rounded-2xl border border-zinc-800/80 shadow-sm">
                             <Link href="/ua"
-                                  className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">UA</Link>
+                                  className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-zinc-800/60 transition-colors font-medium">UA</Link>
                             <Link href="/en"
-                                  className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-white/60 dark:hover:bg-zinc-800/60 transition-colors font-medium">EN</Link>
+                                  className="flex-1 text-center px-6 py-3 rounded-xl hover:bg-zinc-800/60 transition-colors font-medium">EN</Link>
                         </div>
                     </motion.div>
                 </section>
@@ -251,7 +251,7 @@ export default function Home() {
                 {/* ABOUT SECTION */}
                 <motion.section initial={{opacity: 0, y: 40}} whileInView={{opacity: 1, y: 0}} viewport={{once: true}}
                                 transition={{duration: 0.5}}
-                                className="mt-16 w-full max-w-5xl bg-white/40 dark:bg-zinc-900/40 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 md:p-12 shadow-2xl shadow-zinc-950/5 relative overflow-hidden">
+                                className="mt-16 w-full max-w-5xl bg-zinc-900/40 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-6 md:p-12 shadow-2xl shadow-zinc-950/5 relative overflow-hidden">
                     <div
                         className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-[60px] rounded-full pointer-events-none"/>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -263,9 +263,9 @@ export default function Home() {
                             <div className="h-1 w-12 bg-red-600 rounded-full mt-4"/>
                         </div>
                         <div
-                            className="lg:col-span-2 space-y-6 text-zinc-600 dark:text-zinc-300 leading-relaxed text-sm sm:text-base md:text-lg">
+                            className="lg:col-span-2 space-y-6 text-zinc-300 leading-relaxed text-sm sm:text-base md:text-lg">
                             <p><strong
-                                className="text-zinc-950 dark:text-white font-semibold">{t('about.p1_bold')}</strong>{t('about.p1_text')}
+                                className="text-white font-semibold">{t('about.p1_bold')}</strong>{t('about.p1_text')}
                             </p>
                             <p>{t('about.p2_text')}</p>
                         </div>
@@ -284,20 +284,20 @@ export default function Home() {
                                 whileInView={{opacity: 1, y: 0}}
                                 viewport={{once: true, margin: "-100px"}}
                                 transition={{duration: 0.5, delay: index * 0.05}}
-                                className={`w-full bg-gradient-to-br ${section.color} to-white/20 dark:to-zinc-900/10 backdrop-blur-xl border border-white/50 dark:border-zinc-800/50 rounded-3xl p-6 sm:p-10 shadow-xl shadow-zinc-950/5 scroll-mt-24 hover:border-red-600/30 transition-all duration-300`}
+                                className={`w-full bg-gradient-to-br ${section.color} to-white/20 dark:to-zinc-900/10 backdrop-blur-xl border border-zinc-800/50 rounded-3xl p-6 sm:p-10 shadow-xl shadow-zinc-950/5 scroll-mt-24 hover:border-red-600/30 transition-all duration-300`}
                             >
 
                                 {/* Service Header Info */}
                                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6">
                                     <div
-                                        className="p-3 bg-white/80 dark:bg-zinc-950/80 border border-white dark:border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
+                                        className="p-3 bg-zinc-950/80 border border-zinc-800/80 shadow-md text-red-600 rounded-2xl flex items-center justify-center">
                                         <IconElement className="w-6 h-6"/>
                                     </div>
                                     <div>
                                         <span className="text-xs font-semibold text-red-600 uppercase tracking-wider">
                                             {t('service_badge')}
                                         </span>
-                                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-zinc-950 dark:text-white mt-0.5">
+                                        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-white mt-0.5">
                                             {t(`menu.${section.key}`)}
                                         </h2>
                                     </div>
@@ -305,7 +305,7 @@ export default function Home() {
 
                                 {/* Premium Title Wrapper */}
                                 <div className="p-0 flex flex-col justify-center space-y-4 z-10 mb-8 w-full max-w-none">
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-zinc-900 dark:text-white leading-tight tracking-normal whitespace-normal break-words w-full block">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight tracking-normal whitespace-normal break-words w-full block">
                                         {t(`sections.${section.key}.subtitle`)}
                                     </h3>
                                     <div className="w-12 h-[2px] bg-red-600 rounded-full"/>
@@ -315,13 +315,13 @@ export default function Home() {
                                 {section.key === "consultation" && selectedUniversityData && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
                                         <div
-                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
-                                            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-800/80 bg-zinc-900/20 max-w-4xl">
+                                            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
                                                 {t("sections.consultation.text")}
                                             </p>
                                         </div>
                                         <div
-                                            className="flex flex-wrap gap-2 pb-2 border-b border-zinc-200/60 dark:border-zinc-800/60">
+                                            className="flex flex-wrap gap-2 pb-2 border-b border-zinc-800/60">
                                             {UNIVERSITY_CITIES.map((city) => (
                                                 <button
                                                     key={city}
@@ -329,7 +329,7 @@ export default function Home() {
                                                     className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer uppercase tracking-wider ${
                                                         selectedCity === city
                                                             ? "bg-red-600 text-white shadow-md shadow-red-600/10"
-                                                            : "bg-white/50 dark:bg-zinc-900/40 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50"
+                                                            : "bg-zinc-900/40 text-zinc-400 hover:bg-zinc-800/50"
                                                     }`}
                                                 >
                                                     {t(`sections.consultation.universities.${city}.city`)}
@@ -337,7 +337,7 @@ export default function Home() {
                                             ))}
                                         </div>
 
-                                        <p className="text-sm sm:text-base text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-3xl">
+                                        <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-3xl">
                                             {selectedUniversityData.desc}
                                         </p>
 
@@ -351,12 +351,12 @@ export default function Home() {
                                                         initial={{opacity: 0, y: 10}}
                                                         animate={{opacity: 1, y: 0}}
                                                         transition={{duration: 0.25}}
-                                                        className="flex flex-col justify-between p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/40 dark:bg-zinc-900/30 backdrop-blur-md hover:border-red-600/30 dark:hover:border-red-600/30 transition-all shadow-sm group min-h-[180px]"
+                                                        className="flex flex-col justify-between p-5 rounded-2xl border border-zinc-500/60 bg-zinc-900/30 backdrop-blur-md hover:border-red-600/30  transition-all shadow-sm group min-h-[180px]"
                                                     >
                                                         <div>
                                                             <div className="flex items-start gap-4 mb-3">
                                                                 <div
-                                                                    className="relative w-12 h-12 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
+                                                                    className="relative w-12 h-12 rounded-xl border border-zinc-700 bg-white/80 backdrop-blur-sm p-1.5 flex items-center justify-center shrink-0 shadow-sm overflow-hidden group-hover:scale-105 transition-transform">
                                                                     <Image
                                                                         src={logoPath}
                                                                         alt={`${university.name} logo`}
@@ -368,13 +368,13 @@ export default function Home() {
                                                                 </div>
 
                                                                 <div className="flex-grow pt-0.5">
-                                                                    <h4 className="text-base font-bold text-zinc-950 dark:text-white leading-snug">
+                                                                    <h4 className="text-base font-bold text-white leading-snug">
                                                                         {university.name}
                                                                     </h4>
                                                                 </div>
                                                             </div>
 
-                                                            <p className="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed mb-4">
+                                                            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
                                                                 {university.text}
                                                             </p>
                                                         </div>
@@ -396,17 +396,17 @@ export default function Home() {
                                 {section.key === "documents" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
                                         <div
-                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
                                             <div
                                                 className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
-                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.documents.text")}
                                                 </p>
                                             </div>
                                             <div
                                                 className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
                                                 <div
-                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-950 via-zinc-950/10 to-transparent z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/documents/documents_1.png"
                                                     alt="YO Study Documents Visual Team"
@@ -420,7 +420,7 @@ export default function Home() {
 
                                         {/* Features Checklist Grid */}
                                         <div className="space-y-6 pt-2">
-                                            <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+                                            <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
                                                 {t("sections.documents.features_title")}
                                             </h4>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -431,15 +431,15 @@ export default function Home() {
                                                     const FeatureIcon = DOCUMENT_ICONS[feature.id] || Assignment;
                                                     return (
                                                         <div key={i}
-                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                             className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
                                                             <div
-                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                className="p-3 bg-red-600/10 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
                                                             <div className="space-y-1">
                                                                 <span
                                                                     className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
-                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
                                                     );
@@ -453,14 +453,14 @@ export default function Home() {
                                 {section.key === "admission" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
                                         <div
-                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-zinc-50/50 dark:bg-zinc-900/20 max-w-4xl">
-                                            <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
+                                            className="p-5 sm:p-6 rounded-2xl border border-zinc-800/80 bg-zinc-900/20 max-w-4xl">
+                                            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed">
                                                 {t("sections.admission.text")}
                                             </p>
                                         </div>
 
                                         <div className="space-y-6 pt-2">
-                                            <h4 className="text-sm sm:text-base font-bold text-zinc-900 dark:text-white uppercase tracking-wider">
+                                            <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">
                                                 {t("sections.admission.features_title")}
                                             </h4>
 
@@ -473,15 +473,15 @@ export default function Home() {
 
                                                     return (
                                                         <div key={i}
-                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                             className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
                                                             <div
-                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                className="p-3 bg-red-600/10 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
                                                             <div className="space-y-1">
                                                                 <span
                                                                     className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
-                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
                                                     );
@@ -495,17 +495,17 @@ export default function Home() {
                                 {section.key === "dormitory" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
                                         <div
-                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
                                             <div
                                                 className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
-                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.dormitory.text")}
                                                 </p>
                                             </div>
                                             <div
                                                 className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden">
                                                 <div
-                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/40 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-950 via-zinc-950/10 to-transparent z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/dormitory/dormitory_1.png"
                                                     alt="YO Study Dormitory Premium Selection"
@@ -526,15 +526,15 @@ export default function Home() {
 
                                                 return (
                                                     <div key={i}
-                                                         className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                         className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
                                                         <div
-                                                            className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                            className="p-3 bg-red-600/10 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                             <FeatureIcon className="w-6 h-6"/>
                                                         </div>
                                                         <div className="space-y-1">
                                                             <span
                                                                 className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
-                                                            <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
+                                                            <p className="text-sm sm:text-base font-medium text-zinc-200 leading-snug">{feature.text}</p>
                                                         </div>
                                                     </div>
                                                 );
@@ -547,17 +547,17 @@ export default function Home() {
                                 {section.key === "adaptation" && (
                                     <div className="mt-6 space-y-8 animate-fadeIn">
                                         <div
-                                            className="relative overflow-hidden rounded-2xl border border-zinc-200/60 dark:border-zinc-800/80 bg-zinc-50 dark:bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
+                                            className="relative overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-900/30 flex flex-col md:flex-row items-stretch min-h-[320px] h-auto">
                                             <div
                                                 className="flex-1 flex flex-col justify-center gap-4 px-6 py-8 sm:px-10 md:px-12 z-10 md:max-w-[55%]">
-                                                <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
+                                                <p className="text-sm sm:text-base text-zinc-400 leading-relaxed font-medium whitespace-pre-line">
                                                     {t("sections.adaptation.text")}
                                                 </p>
                                             </div>
                                             <div
                                                 className="relative h-[250px] md:h-auto md:absolute md:inset-y-0 md:right-0 md:w-[45%] overflow-hidden flex items-end">
                                                 <div
-                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-50 via-zinc-50/20 to-transparent dark:from-zinc-950 dark:via-zinc-950/10 z-10 pointer-events-none"/>
+                                                    className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-zinc-950 via-zinc-950/10 to-transparent z-10 pointer-events-none"/>
                                                 <Image
                                                     src="/images/adaptation/adaptation_1.png"
                                                     alt="YO Study Adaptation"
@@ -578,15 +578,15 @@ export default function Home() {
                                                     const FeatureIcon = ADAPTION_ICONS[feature.id] || Apartment;
                                                     return (
                                                         <div key={i}
-                                                             className="flex gap-4 p-5 rounded-2xl border border-white/40 dark:border-zinc-800/60 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30 dark:hover:border-red-600/30 transition-all group shadow-sm">
+                                                             className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
                                                             <div
-                                                                className="p-3 bg-red-600/10 dark:bg-red-600/5 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
+                                                                className="p-3 bg-red-600/10 text-red-600 rounded-xl flex items-center justify-center shrink-0 border border-red-600/10 group-hover:scale-105 transition-transform">
                                                                 <FeatureIcon className="w-6 h-6"/>
                                                             </div>
                                                             <div className="space-y-1">
                                                                 <span
                                                                     className="text-xs font-bold text-red-600 tracking-wider block">{feature.id}</span>
-                                                                <p className="text-sm sm:text-base font-medium text-zinc-800 dark:text-zinc-200 leading-snug">{feature.text}</p>
+                                                                <p className="text-sm sm:text-base font-medium text-zinc-200 leading-snug">{feature.text}</p>
                                                             </div>
                                                         </div>
                                                     );
@@ -594,9 +594,9 @@ export default function Home() {
                                             </div>
 
                                             <div
-                                                className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/5 dark:bg-red-600/10 border border-red-600/20 w-full mt-4">
+                                                className="flex items-start gap-3.5 p-4 rounded-2xl bg-red-600/10 border border-red-600/20 w-full mt-4">
                                                 <Shield className="w-5 h-5 text-red-600 shrink-0 mt-0.5"/>
-                                                <p className="text-xs sm:text-sm font-medium text-zinc-700 dark:text-zinc-300 leading-relaxed flex-grow">
+                                                <p className="text-xs sm:text-sm font-medium text-zinc-300 leading-relaxed flex-grow">
                                                     {t("sections.adaptation.footer_text")}
                                                 </p>
                                             </div>
@@ -616,32 +616,32 @@ export default function Home() {
                         <span
                             className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('pricing.badge')}</span>
                         <h2 className="text-2xl sm:text-4xl font-bold tracking-tight">{t('pricing.title')}</h2>
-                        <p className="text-sm sm:text-base text-zinc-500 max-w-2xl mx-auto px-4">{t('pricing.subtitle')}</p>
+                        <p className="text-sm sm:text-base text-zinc-400 max-w-2xl mx-auto px-4">{t('pricing.subtitle')}</p>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-stretch px-2 sm:px-0 pt-4">
                         {PRICING_PLANS.map((plan) => (
                             <div key={plan.key}
-                                 className={`relative flex flex-col justify-between backdrop-blur-xl border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${plan.isPopular ? 'bg-white/65 dark:bg-zinc-900/65 border-red-600/50 ring-4 ring-red-600/5 lg:scale-[1.03] z-10 shadow-xl shadow-zinc-950/10' : 'bg-white/25 dark:bg-zinc-900/25 border-white/40 dark:border-zinc-800/40 shadow-xl shadow-zinc-950/5 opacity-[0.98] hover:opacity-100'}`}>
+                                 className={`relative flex flex-col justify-between backdrop-blur-xl border rounded-3xl p-6 md:p-8 transition-all duration-300 hover:-translate-y-1.5 ${plan.hoverStyle} ${plan.isPopular ? 'bg-zinc-900/65 border-red-600/50 ring-4 ring-red-600/5 lg:scale-[1.03] z-10 shadow-xl shadow-zinc-950/10' : 'bg-zinc-900/25 border-zinc-800/40 shadow-xl shadow-zinc-950/5 opacity-[0.98] hover:opacity-100'}`}>
                                 {plan.isPopular && <span
                                     className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider rounded-full shadow-md shadow-red-600/10">{t('pricing.popular_badge')}</span>}
 
                                 <div className="space-y-6">
                                     <div>
-                                        <h3 className="text-xl font-bold text-zinc-950 dark:text-white">{t(`pricing.plans.${plan.key}.title`)}</h3>
-                                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5 min-h-[32px] leading-relaxed">{t(`pricing.plans.${plan.key}.desc`)}</p>
+                                        <h3 className="text-xl font-bold text-white">{t(`pricing.plans.${plan.key}.title`)}</h3>
+                                        <p className="text-xs text-zinc-400 mt-1.5 min-h-[32px] leading-relaxed">{t(`pricing.plans.${plan.key}.desc`)}</p>
                                     </div>
                                     <div className="flex items-baseline">
                                         <span
-                                            className="text-4xl font-extrabold tracking-tight text-zinc-950 dark:text-white">{plan.price}</span>
+                                            className="text-4xl font-extrabold tracking-tight text-white">{plan.price}</span>
                                         <span
-                                            className="text-zinc-500 dark:text-zinc-400 ml-1.5 text-xs font-medium">{t('pricing.period')}</span>
+                                            className="text-zinc-400 ml-1.5 text-xs font-medium">{t('pricing.period')}</span>
                                     </div>
-                                    <div className="flex border-b border-zinc-200 dark:border-zinc-800 w-full"/>
+                                    <div className="flex border-b border-zinc-800 w-full"/>
                                     <ul className="space-y-3.5">
                                         {Array.from({length: plan.featuresCount}).map((_, i) => (
                                             <li key={i}
-                                                className="flex items-start gap-2.5 text-sm text-zinc-600 dark:text-zinc-300 leading-snug">
+                                                className="flex items-start gap-2.5 text-sm text-zinc-300 leading-snug">
                                                 <CheckCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5"/>
                                                 <span>{t(`pricing.plans.${plan.key}.f${i + 1}`)}</span>
                                             </li>
@@ -652,7 +652,7 @@ export default function Home() {
                                 <div className="pt-8">
                                     <button
                                         onClick={() => handlePlanClick(plan.key)}
-                                        className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all active:scale-95 cursor-pointer text-center ${plan.isPopular ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20' : 'bg-white/60 hover:bg-white/80 dark:bg-zinc-950/40 dark:hover:bg-zinc-950/60 text-zinc-900 dark:text-white border border-white/50 dark:border-zinc-800/40 shadow-sm'}`}
+                                        className={`w-full py-3.5 px-4 rounded-xl font-semibold text-sm transition-all active:scale-95 cursor-pointer text-center ${plan.isPopular ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-600/20' : 'bg-zinc-950/40 hover:bg-zinc-950/60 text-white border border-zinc-800/40 shadow-sm'}`}
                                     >
                                         {t('pricing.cta')}
                                     </button>
@@ -665,7 +665,7 @@ export default function Home() {
                 {/* CONTACT AND CONSULTATION FORM SECTION */}
                 <motion.section id="consultation" initial={{opacity: 0, y: 40}} whileInView={{opacity: 1, y: 0}}
                                 viewport={{once: true}} transition={{duration: 0.5}}
-                                className="mt-24 w-full max-w-5xl bg-white/35 dark:bg-zinc-900/35 backdrop-blur-xl border border-white/40 dark:border-zinc-800/40 rounded-3xl p-6 md:p-10 shadow-2xl shadow-zinc-950/5 relative overflow-hidden scroll-mt-24">
+                                className="mt-24 w-full max-w-5xl bg-zinc-900/35 backdrop-blur-xl border border-zinc-800/40 rounded-3xl p-6 md:p-10 shadow-2xl shadow-zinc-950/5 relative overflow-hidden scroll-mt-24">
                     <div
                         className="absolute -bottom-10 -left-10 w-48 h-48 bg-red-600/10 blur-[50px] rounded-full pointer-events-none"/>
 
@@ -675,7 +675,7 @@ export default function Home() {
                                 className="text-xs font-bold tracking-widest text-red-600 uppercase">{t('features.support')}</span>
                             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">{t('contact.title_part1')}
                                 <span className="text-red-600">{t('contact.title_part2')}</span></h2>
-                            <p className="text-sm md:text-base text-zinc-500 dark:text-zinc-400 max-w-md">{t('contact.description')}</p>
+                            <p className="text-sm md:text-base text-zinc-400 max-w-md">{t('contact.description')}</p>
                         </div>
 
                         <div className="space-y-6 overflow-hidden">
@@ -687,7 +687,7 @@ export default function Home() {
                                     value={phone}
                                     onChange={handlePhoneChange}
                                     required
-                                    className="flex-grow px-4 py-4 rounded-xl bg-white/70 dark:bg-zinc-950 border border-white/50 dark:border-zinc-800/80 focus:outline-none focus:border-red-600 dark:focus:border-red-600 text-sm font-medium shadow-sm transition-colors duration-200"
+                                    className="flex-grow px-4 py-4 rounded-xl bg-zinc-950 border border-zinc-800/80 focus:outline-none focus:border-red-600 dark:focus:border-red-600 text-sm font-medium shadow-sm transition-colors duration-200"
                                 />
                                 <button type="submit"
                                         className="px-6 py-4 bg-red-600 hover:bg-red-700 text-white rounded-xl font-semibold shadow-lg shadow-red-600/10 hover:scale-[1.02] active:scale-95 transition-all cursor-pointer whitespace-nowrap text-sm flex items-center justify-center">
@@ -697,9 +697,9 @@ export default function Home() {
 
                             <div
                                 className="flex items-center gap-3 text-xs text-zinc-400 uppercase tracking-wider justify-center lg:justify-start">
-                                <div className="h-px bg-white/40 dark:bg-zinc-800/40 flex-grow max-w-[60px]"/>
+                                <div className="h-px bg-zinc-800/40 flex-grow max-w-[60px]"/>
                                 <span>{t('contact.divider_text')}</span>
-                                <div className="h-px bg-white/40 dark:bg-zinc-800/40 flex-grow max-w-[60px]"/>
+                                <div className="h-px bg-zinc-800/40 flex-grow max-w-[60px]"/>
                             </div>
 
                             {/* Social Messengers Direct Routing Matrix */}
@@ -709,7 +709,7 @@ export default function Home() {
                                     href={`https://t.me/solomchakju?text=${encodedDirectMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-800/50 bg-zinc-950/40 hover:bg-zinc-900 text-xs font-medium text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <TelegramIcon className="w-4 h-4 text-sky-400"/>
                                     Telegram
@@ -719,7 +719,7 @@ export default function Home() {
                                     href={`viber://chat?number=380958216860&text=${encodedDirectMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-800/50 bg-zinc-950/40 hover:bg-zinc-900 text-xs font-medium text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <ChatIcon className="w-4 h-4 text-purple-500"/>
                                     Viber
@@ -729,7 +729,7 @@ export default function Home() {
                                     href={`https://wa.me/436764579334?text=${encodedDirectMessage}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-800/50 bg-zinc-950/40 hover:bg-zinc-900 text-xs font-medium text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <WhatsAppIcon className="w-4 h-4 text-emerald-500"/>
                                     WhatsApp
@@ -739,7 +739,7 @@ export default function Home() {
                                     href="https://instagram.com/yostudy.austria"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-white/50 dark:border-zinc-800/50 bg-white/60 dark:bg-zinc-950/40 hover:bg-white/80 dark:hover:bg-zinc-900 text-xs font-medium text-zinc-700 dark:text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
+                                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-zinc-800/50 bg-zinc-950/40 hover:bg-zinc-900 text-xs font-medium text-zinc-300 transition-colors shadow-sm cursor-pointer whitespace-nowrap"
                                 >
                                     <InstagramIcon style={{fill: "url(#instagram-gradient)"}} className="w-4 h-4"/>
                                     Instagram

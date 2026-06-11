@@ -25,7 +25,7 @@ export default function Navbar() {
 
     return (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 max-w-[95vw]">
-            <div className="flex items-center gap-1 sm:gap-2 px-3 py-2 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl">
+            <div className="flex items-center gap-1 sm:gap-2 px-3 py-2 bg-zinc-950/80 backdrop-blur-md border border-zinc-800 rounded-2xl shadow-2xl">
 
                 {menuItems.map((item) => {
                     const IconComponent = item.icon;

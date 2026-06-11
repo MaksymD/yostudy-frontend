@@ -34,14 +34,14 @@ export default function Header() {
     };
 
     return (
-        <header className="fixed top-0 w-full z-50 py-4 px-4 sm:px-6 border-b border-zinc-200 dark:border-zinc-800 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md">
+        <header className="fixed top-0 w-full z-50 py-4 px-4 sm:px-6 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md">
             <div className="container mx-auto px-6 h-16 flex items-center justify-between">
 
                 {/* Logo Link */}
                 <Link href={`/${locale}`} className="text-6xl font-bold shrink-0">
                     <span className="relative inline-block text-red-600">
                         <span className="relative inline-block">
-                            <span className="absolute -top-[-4px] left-0 h-[2px] w-full bg-white"></span>
+                            <span className="absolute -top-[-4px] left-0 h-[2px] w-full bg-zinc-950"></span>
                             Yo
                     </span>
                     <span
@@ -60,7 +60,7 @@ export default function Header() {
                                 key={item.key}
                                 onClick={() => handleScroll(item.id)}
                                 title={t(item.key)}
-                                className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-500 transition-colors cursor-pointer whitespace-nowrap p-1 sm:p-0 rounded-lg"
+                                className="flex items-center gap-1.5 text-xs sm:text-sm font-medium text-zinc-400 hover:text-red-600 dark:hover:text-red-500 transition-colors cursor-pointer whitespace-nowrap p-1 sm:p-0 rounded-lg"
                             >
                                 <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-500 dark:text-zinc-400" />
                                 <span>
