@@ -55,6 +55,7 @@ export default async function LocaleLayout({
             {/* Navbar is fixed at the bottom */}
             <Navbar />
         </NextIntlClientProvider>
+        <Analytics />
         </body>
         </html>
     );
