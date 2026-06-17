@@ -29,6 +29,29 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## 🔒 Deployment & Infrastructure (Crucial Data)
+
+### 1. Production Environments
+* **Primary Domain (Vercel Edge):** [https://yostudy.at](https://yostudy.at)
+* **Canonical Redirect:** [https://www.yostudy.at](https://www.yostudy.at) (Configured as an automated 301 redirect to the apex domain).
+* **Search Engine Optimization:** Connected and verified with **Google Search Console** using DNS TXT records.
+* https://www.customercontrolpanel.de/index.php?action=se
+
+### 2. CI/CD & Routing Pipeline
+The infrastructure uses a modern decoupled architecture:
+$$\text{netcup (Domain/DNS)} \longrightarrow \text{Vercel (Next.js Frontend)} \longrightarrow \text{Google Search Console}$$
+
+* **DNS Management:** Hosted on **netcup**.
+* **Hosting & SSL:** Automated builds and SSL generation are entirely handled by **Vercel** via GitHub integration.
+
+## 🛠️ Development & Build Tasks
+
+### Local Development
+To run the local server on [http://localhost:3000](http://localhost:3000):
+```bash
+npm run dev
+```
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.

@@ -7,6 +7,13 @@ import {Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
 
+export function generateStaticParams() {
+    return [
+        { locale: 'en' },
+        { locale: 'ua' }
+    ];
+}
+
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
