@@ -6,6 +6,7 @@ import "@/app/globals.css";
 import {Geist, Geist_Mono} from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Header from "@/components/Header";
+import { Analytics } from "@vercel/analytics/next"
 
 export function generateStaticParams() {
     return [
