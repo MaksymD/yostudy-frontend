@@ -10,7 +10,7 @@ export default getRequestConfig(async ({requestLocale}) => {
         notFound();
     }
     return {
-        locale: locale as string,
+        locale: locale as (typeof locales)[number],
         messages: (await import(`../public/locales/${locale}/common.json`)).default
     };
 });
