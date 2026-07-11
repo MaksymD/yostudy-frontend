@@ -41,14 +41,9 @@ export default function Header() {
                 <Link href={`/${locale}`} className="text-6xl font-bold shrink-0">
                     <span className="relative inline-block text-red-600">
                         <span className="relative inline-block">
-                            <span className="absolute -top-[-4px] left-0 h-[2px] w-full bg-zinc-950"></span>
-                            Yo
+                            <span className="absolute top-1 left-0 h-[3px] w-full bg-white"></span>Yo</span>
+                        <span className="ml-1 text-lg sm:text-2xl font-semibold text-white underline decoration-red-600 decoration-2 underline-offset-4">Study</span>
                     </span>
-                    <span
-                        className="ml-1 text-lg sm:text-2xl font-semibold text-white underline decoration-red-600 decoration-2 underline-offset-4">
-                        Study
-                    </span>
-                        </span>
                 </Link>
 
                 {/* Navigation Menu - Hidden on mobile, visible only on lg screens and up */}
