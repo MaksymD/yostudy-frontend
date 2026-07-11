@@ -2,23 +2,20 @@ import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://yostudy.at';
-    const locales = ['en', 'ua'];
-    const routes = ['', 'components'];
+    const locales = ['ua', 'en'] as const;
+    const defaultLocale = 'ua';
 
-    const sitemapEntries: MetadataRoute.Sitemap = [];
-
-    routes.forEach((route) => {
-        const path = route ? `/${route}` : '';
-
-        locales.forEach((locale) => {
-            sitemapEntries.push({
-                url: `${baseUrl}/${locale}${path}`,
-                lastModified: new Date(),
-                changeFrequency: 'daily',
-                priority: route === '' ? 1.0 : 0.8,
-            });
-        });
-    });
-
-    return sitemapEntries;
+    return locales.map((locale) => ({
+        url: `${baseUrl}/${locale}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly',
+        priority: locale === defaultLocale ? 1.0 : 0.8,
+        alternates: {
+            languages: {
+                ua: `${baseUrl}/ua`,
+                en: `${baseUrl}/en`,
+                'x-default': `${baseUrl}/${defaultLocale}`,
+            },
+        },
+    }));
 }
