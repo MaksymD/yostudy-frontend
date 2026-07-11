@@ -5,41 +5,16 @@ import {useTranslations} from "next-intl";
 import {openTelegram} from "@/lib/messenger";
 import {motion} from "framer-motion";
 import {
-    AccessTime,
-    AccountBalance,
-    Apartment,
-    ArrowRight,
-    Assignment,
-    AssignmentTurnedIn,
-    Badge,
-    BookmarkAdded,
-    BorderColor,
-    CheckCircle,
-    ContentPasteGo,
-    CreditScore,
-    Description,
-    EditDocument,
-    FolderShared,
-    Gavel,
-    HealthAndSafety,
-    HomeWork,
-    HowToReg,
-    Instagram as InstagramIcon,
-    ManageAccounts,
-    Quiz,
-    Rule,
-    School,
-    Search,
-    Send,
-    Shield,
-    SimCard,
-    SupportAgent,
-    Telegram as TelegramIcon,
-    Translate,
-    VerifiedUser,
-    WhatsApp as WhatsAppIcon
-} from "@mui/icons-material";
+    Search, ArrowRight, ClipboardList, ListChecks, Languages, Gavel, Clock,
+    UserCheck, ClipboardCheck, FileCheck, GraduationCap, PenLine, FileText,
+    HelpCircle, UserCog, BadgeCheck, CreditCard, Building2, BookmarkCheck,
+    FolderOpen, Pencil, ShieldCheck, Home as HomeIcon, Landmark, HeartPulse, Smartphone,
+    Headset, Send, Shield, CheckCircle2
+} from "lucide-react";
 import ChatIcon from '@mui/icons-material/Chat';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import Link from "next/link";
 import Image from "next/image";
 
@@ -86,7 +61,7 @@ export default function Home() {
     };
 
     // Form submission handler routing to Telegram with dynamic text
-    const handleTelegramSubmit = (e: React.FormEvent) => {
+    const handleTelegramSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!phone) return;
         openTelegram(t('contact.telegram_message', { phone }));
@@ -132,42 +107,42 @@ export default function Home() {
 
     const DOCUMENT_ICONS: Record<string, React.ElementType> = {
         "01": Search,
-        "02": Assignment,
-        "03": Rule,
-        "04": Translate,
+        "02": ClipboardList,
+        "03": ListChecks,
+        "04": Languages,
         "05": Gavel,
-        "06": AccessTime,
+        "06": Clock,
         "07": Send
     };
 
     const ADMISSION_ICONS: Record<string, React.ElementType> = {
-        "01": HowToReg,
-        "02": AssignmentTurnedIn,
-        "03": ContentPasteGo,
-        "04": School,
-        "05": EditDocument,
-        "06": Description,
-        "07": Quiz,
-        "08": ManageAccounts,
-        "09": Badge,
-        "10": CreditScore
+        "01": UserCheck,
+        "02": ClipboardCheck,
+        "03": FileCheck,
+        "04": GraduationCap,
+        "05": PenLine,
+        "06": FileText,
+        "07": HelpCircle,
+        "08": UserCog,
+        "09": BadgeCheck,
+        "10": CreditCard
     };
 
     const DORMITORY_ICONS: Record<string, React.ElementType> = {
-        "01": Apartment,
-        "02": BookmarkAdded,
-        "03": FolderShared,
-        "04": BorderColor,
-        "05": VerifiedUser
+        "01": Building2,
+        "02": BookmarkCheck,
+        "03": FolderOpen,
+        "04": Pencil,
+        "05": ShieldCheck
     };
 
     const ADAPTION_ICONS: Record<string, React.ElementType> = {
-        "01": Badge,
-        "02": HomeWork,
-        "03": AccountBalance,
-        "04": HealthAndSafety,
-        "05": SimCard,
-        "06": SupportAgent
+        "01": BadgeCheck,
+        "02": HomeIcon,
+        "03": Landmark,
+        "04": HeartPulse,
+        "05": Smartphone,
+        "06": Headset
     };
 
     return (
@@ -428,7 +403,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const FeatureIcon = DOCUMENT_ICONS[feature.id] || Assignment;
+                                                    const FeatureIcon = DOCUMENT_ICONS[feature.id] || ClipboardList;
                                                     return (
                                                         <div key={i}
                                                              className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
@@ -469,7 +444,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const FeatureIcon = ADMISSION_ICONS[feature.id] || AssignmentTurnedIn;
+                                                    const FeatureIcon = ADMISSION_ICONS[feature.id] || ClipboardCheck;
 
                                                     return (
                                                         <div key={i}
@@ -522,7 +497,7 @@ export default function Home() {
                                                 id: string;
                                                 text: string
                                             }[]).map((feature, i) => {
-                                                const FeatureIcon = DORMITORY_ICONS[feature.id] || Apartment;
+                                                const FeatureIcon = DORMITORY_ICONS[feature.id] || Building2;
 
                                                 return (
                                                     <div key={i}
@@ -575,7 +550,7 @@ export default function Home() {
                                                     id: string;
                                                     text: string
                                                 }[]).map((feature, i) => {
-                                                    const FeatureIcon = ADAPTION_ICONS[feature.id] || Apartment;
+                                                    const FeatureIcon = ADAPTION_ICONS[feature.id] || Building2;
                                                     return (
                                                         <div key={i}
                                                              className="flex gap-4 p-5 rounded-2xl border border-zinc-800/60 bg-zinc-900/40 backdrop-blur-md items-start hover:border-red-600/30  transition-all group shadow-sm">
@@ -642,7 +617,7 @@ export default function Home() {
                                         {Array.from({length: plan.featuresCount}).map((_, i) => (
                                             <li key={i}
                                                 className="flex items-start gap-2.5 text-sm text-zinc-300 leading-snug">
-                                                <CheckCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5"/>
+                                                <CheckCircle2 className="w-4 h-4 text-red-600 shrink-0 mt-0.5"/>
                                                 <span>{t(`pricing.plans.${plan.key}.f${i + 1}`)}</span>
                                             </li>
                                         ))}
